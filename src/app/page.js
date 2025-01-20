@@ -193,7 +193,7 @@ export default function Home() {
           </a>
         </div>
         </section>
-        <section className="py-16 bg-white text-gray-800">
+        <section id='solutions' className="py-16 bg-white text-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className=" mb-12">
             <h2 className="text-4xl font-bold text-gray-900">
@@ -259,7 +259,7 @@ export default function Home() {
           </div>
         </div>
         </section>
-        <section className="py-16 bg-[#08254121] text-gray-800">
+        <section id='about' className="py-16 bg-[#08254121] text-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-6xl font-semibold text-gray-900">
