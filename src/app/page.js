@@ -1,9 +1,15 @@
 "use client"
 import React, { useState } from 'react';
+
 import Header from "@/components/Header/Header";
 import Image from "next/image";
 import Footer from '@/components/Footer/Footer';
 import Link from 'next/link';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 
 const testimonialsData = [
@@ -57,9 +63,21 @@ export default function Home() {
   };
   return (
     <>
- <div className="bg-[url('/bcgcmbackground.png')] bg-cover bg-center h-screen">
-      {/* Header Section */}
-        <header className="text-white">
+      <div className="relative h-screen ">
+  {/* Background Video */}
+  <video
+    className="absolute top-0 left-0 w-full h-full object-cover"
+    src="/bcgcmvd.mp4"
+    autoPlay
+    loop
+    muted
+    playsInline
+  ></video>
+<div className="absolute top-0 left-0 w-full h-full bg-[#082541] bg-opacity-50"></div>
+  {/* Overlay Content */}
+  <div className="relative z-10">
+    {/* Header Section */}
+    <header className="text-white">
       <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           <div className="flex gap-12 items-center">
@@ -90,7 +108,7 @@ export default function Home() {
           {/* Call-to-action button for desktop */}
           <div className="hidden md:block">
             <a
-              href="#book"
+              href="/book-appointment"
               className="bg-white px-6 py-3 rounded-full text-[#09336F] font-bold transition duration-300"
             >
               BOOK A CALL
@@ -143,7 +161,7 @@ export default function Home() {
 
         {/* Mobile menu dropdown */}
         {isMenuOpen && (
-          <div className="md:hidden absolute  left-0 w-full bg-white z-50">
+          <div className="md:hidden absolute left-0 w-full bg-white z-50">
             <div className="space-y-1 px-4 pt-5 pb-3 sm:px-6">
               <a
                 href="#solutions"
@@ -168,10 +186,11 @@ export default function Home() {
         )}
       </div>
     </header>
+  </div>
 
       {/* Hero Section */}
       <section
-        className=" text-center text-white py-20 px-4 flex flex-col items-center justify-end h-[91vh]"
+        className="relative z-10 text-center text-white py-20 px-4 flex flex-col items-center justify-end h-[91vh]"
       >
         <div className="max-w-4xl mx-auto">
           <h1 className="text-3xl sm:text-5xl font-bold mb-4 text-[#38C682]">
@@ -186,7 +205,7 @@ export default function Home() {
             mobile banking, debit cards, and free ATM access.
           </p>
           <a
-            href="#book"
+            href="/book-appointment"
             className="bg-white px-6 py-3 pt-4 rounded-full font-bold text-[#09336F] transition duration-300"
           >
             BOOK A CALL
@@ -321,12 +340,13 @@ export default function Home() {
           Explore your options further one-on-one with our team. Our<br></br> consultation calls are
           designed to guide you through the diverse<br></br> financial programs and identify the optimal
           solution tailored to <br></br>your unique business needs and objectives.
-        </p>
+            </p>
+            <a href='/book-appointment'>
         <button
           className="bg-white text-blue-900 font-medium py-3 px-6 rounded-lg shadow-lg hover:bg-gray-200 transition"
         >
           BOOK A CALL
-        </button>
+        </button></a>
       </div>
         </section>
         <section className="bg-white py-12 px-6 sm:px-12 lg:px-24 relative">
@@ -340,42 +360,62 @@ export default function Home() {
         </p>
       </div>
 
-      {/* White Gradient Overlays */}
-      {/* <div className="absolute top-0 left-0 w-full h-16 bg-gradient-to-r from-white to-transparent"></div>
-      <div className="absolute top-0 right-0 w-full h-16 bg-gradient-to-l from-white to-transparent"></div> */}
-
-      {/* Testimonials container */}
-      <div className="flex overflow-hidden justify-center gap-6">
-        {testimonialsData.slice(currentIndex, currentIndex + 3).map((testimonial) => (
-          <div
-            key={testimonial.id}
-            className=" p-6 flex flex-col justify-center max-w-xs text-center h-[20rem]"
-          >
-            <div className="text-3xl text-green-400 mb-4 flex justify-center items-center h-[30%]">
-              <img src={"/quote2.png"} alt="Logo"  className="w-full" />
+     <div className="flex flex-col items-center w-full">
+      {/* Swiper Slider */}
+       <Swiper
+        slidesPerView={1}
+        spaceBetween={20}
+        navigation={{
+          nextEl: ".custom-next",
+          prevEl: ".custom-prev",
+        }}
+        pagination={{ clickable: true }}
+        breakpoints={{
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 30,
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 40,
+          },
+        }}
+              modules={[Navigation, Pagination,Autoplay]}
+              loop={true}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: true,
+            }}
+        className="mySwiper w-full mt-10"
+      >
+        {testimonialsData.map((testimonial) => (
+          <SwiperSlide key={testimonial.id} className="flex justify-center">
+            <div className="p-6 flex flex-col justify-center  text-center h-[20rem] ">
+              <div className="text-3xl text-green-400 mb-4 flex justify-center items-center h-[30%]">
+                <img src={"/quote2.png"} alt="Quote Icon" className="w-full h-12" />
+              </div>
+              <p className="text-sm sm:text-base text-gray-700 mb-4 h-[70%]">
+                {testimonial.text}
+              </p>
             </div>
-            <p className="text-sm sm:text-base text-gray-700 mb-4 h-[70%]">
-              {testimonial.text}
-            </p>
-          </div>
+          </SwiperSlide>
         ))}
-      </div>
+      </Swiper>
 
-      {/* Navigation Arrows */}
-      <div className="flex justify-center mt-8 gap-12">
+      {/* Custom Navigation Buttons */}
+      <div className="flex justify-center mt-8 gap-8">
         <button
-          onClick={prevTestimonial}
-          
+          className="custom-prev w-12 h-12 rounded-full  text-white flex items-center justify-center  transition duration-300"
         >
-          <img src={"/leftButton.png"} alt="Logo"  width={62} height={62}   />
+         <img src={"/leftButton.png"} alt="Left Arrow" width={67} height={67} />
         </button>
         <button
-          onClick={nextTestimonial}
-          
+          className="custom-next w-12 h-12 rounded-full  text-white flex items-center justify-center  transition duration-300"
         >
-          <Image src={"/rightButton.png"} alt="Logo" width={62} height={62}  />
+          <img src={"/rightButton.png"} alt="Left Arrow" width={67} height={67} />
         </button>
       </div>
+    </div>
         </section>
         <Footer/>
     </div>     

@@ -1,51 +1,21 @@
 {
   "pages": {
-    "/_not-found/page": [
-      "static/chunks/webpack-114b5b127db4c455.js",
-      "static/chunks/4bd1b696-f6a08746561b241a.js",
-      "static/chunks/517-a032f17c777b96bb.js",
-      "static/chunks/main-app-a15e37a43bd6d0fc.js",
-      "static/chunks/app/_not-found/page-5923477c49a51113.js"
-    ],
     "/layout": [
-      "static/chunks/webpack-114b5b127db4c455.js",
-      "static/chunks/4bd1b696-f6a08746561b241a.js",
-      "static/chunks/517-a032f17c777b96bb.js",
-      "static/chunks/main-app-a15e37a43bd6d0fc.js",
-      "static/css/38d9bdd9f7312ede.css",
-      "static/chunks/app/layout-28f13e9e2296c9cb.js"
-    ],
-    "/global-businesss/page": [
-      "static/chunks/webpack-114b5b127db4c455.js",
-      "static/chunks/4bd1b696-f6a08746561b241a.js",
-      "static/chunks/517-a032f17c777b96bb.js",
-      "static/chunks/main-app-a15e37a43bd6d0fc.js",
-      "static/chunks/465-ab41b11d1d7bea57.js",
-      "static/chunks/app/global-businesss/page-06c0a26d5dfdebcd.js"
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/layout.css",
+      "static/chunks/app/layout.js"
     ],
     "/page": [
-      "static/chunks/webpack-114b5b127db4c455.js",
-      "static/chunks/4bd1b696-f6a08746561b241a.js",
-      "static/chunks/517-a032f17c777b96bb.js",
-      "static/chunks/main-app-a15e37a43bd6d0fc.js",
-      "static/chunks/465-ab41b11d1d7bea57.js",
-      "static/chunks/app/page-34b73c3a76d3a6a7.js"
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/page.css",
+      "static/chunks/app/page.js"
     ],
-    "/structured-private-placement-programs/page": [
-      "static/chunks/webpack-114b5b127db4c455.js",
-      "static/chunks/4bd1b696-f6a08746561b241a.js",
-      "static/chunks/517-a032f17c777b96bb.js",
-      "static/chunks/main-app-a15e37a43bd6d0fc.js",
-      "static/chunks/465-ab41b11d1d7bea57.js",
-      "static/chunks/app/structured-private-placement-programs/page-710dd3425264b99e.js"
-    ],
-    "/structured-private-project-funding/page": [
-      "static/chunks/webpack-114b5b127db4c455.js",
-      "static/chunks/4bd1b696-f6a08746561b241a.js",
-      "static/chunks/517-a032f17c777b96bb.js",
-      "static/chunks/main-app-a15e37a43bd6d0fc.js",
-      "static/chunks/465-ab41b11d1d7bea57.js",
-      "static/chunks/app/structured-private-project-funding/page-d9b1c114da555c85.js"
+    "/book-appointment/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/book-appointment/page.js"
     ]
   }
 }
