@@ -1,4 +1,9 @@
 {
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/_not-found/page": "app/_not-found/page.js",
   "/page": "app/page.js",
-  "/book-appointment/page": "app/book-appointment/page.js"
+  "/book-appointment/page": "app/book-appointment/page.js",
+  "/structured-private-project-funding/page": "app/structured-private-project-funding/page.js",
+  "/global-businesss/page": "app/global-businesss/page.js",
+  "/structured-private-placement-programs/page": "app/structured-private-placement-programs/page.js"
 }

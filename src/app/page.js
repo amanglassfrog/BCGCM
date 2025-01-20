@@ -281,7 +281,7 @@ export default function Home() {
         <section id='about' className="py-16 bg-[#08254121] text-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-6xl font-semibold text-gray-900">
+            <h2 className="text-3xl md:text-6xl font-semibold text-gray-900">
               We Take Your <span className="text-green-500">Security</span><br></br> and <span className="text-green-500">Privacy</span> Seriously
             </h2>
             <p className="mt-4 text-lg text-gray-600">

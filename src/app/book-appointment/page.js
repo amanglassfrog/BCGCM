@@ -1,7 +1,7 @@
 "use client";
 import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const months = [
   "January", "February", "March", "April", "May", "June",
@@ -31,6 +31,37 @@ const MeetingSection = () => {
   const [transactionIdValid, setTransactionIdValid] = useState(false);
   const today = new Date();
   const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+   const [slotsWithStatus, setSlotsWithStatus] = useState([]);
+
+  useEffect(() => {
+    const calculateSlotStatus = () => {
+      const now = new Date();
+
+      // Check if the selected date is today
+      const isToday =
+        selectedDate &&
+        new Date(selectedDate).toDateString() === now.toDateString();
+
+      const currentTime = now.getHours() * 60 + now.getMinutes(); // Current time in minutes since midnight
+
+      const slots = timeSlots.map((slot) => {
+        const [time, meridian] = slot.split(" ");
+        let [hours, minutes] = time.split(":").map(Number);
+
+        if (meridian === "PM" && hours !== 12) hours += 12;
+        const slotTimeInMinutes = hours * 60 + minutes;
+
+        return {
+          time: slot,
+          isPast: isToday && slotTimeInMinutes <= currentTime, // Determine if the slot is in the past
+        };
+      });
+
+      setSlotsWithStatus(slots);
+    };
+
+    calculateSlotStatus();
+  }, [selectedDate]);
 
   // Check if a date is in the past
   const isDateInPast = (year, month, day) => {
@@ -87,7 +118,7 @@ const MeetingSection = () => {
         Math.floor(100000 + Math.random() * 900000).toString();
       const generatedOtp = generateOtp();
 
-      await localStorage.setItem("otp", generatedOtp);
+      localStorage.setItem("otp", generatedOtp);
 
       const apiKey = "APIfJCi7asW85127";
       const message = `Dear User, Your OTP for login to MobiDoc app is ${generatedOtp}. Valid for 30 minutes. Please do not share this OTP. Regards, Team IntelGray`;
@@ -229,7 +260,7 @@ const MeetingSection = () => {
     <>
       <Header />
       <section className="py-16 text-gray-800 bg-white">
-        <div className="max-w-7xl flex flex-col lg:flex-row justify-center mx-auto px-4 sm:px-6 lg:px-8 shadow-lg rounded-lg border border-gray-200">
+        <div className="max-w-7xl flex flex-col lg:flex-row justify-center mx-auto px-4 sm:px-6 lg:px-8 shadow-lg rounded-lg border border-[#082541]">
           {/* Left Section */}
           <div className="p-6 w-full lg:w-1/2 max-w-3xl border-r-2">
             <h1 className="text-red-600 text-3xl font-bold mb-4">BCGCMi</h1>
@@ -305,28 +336,29 @@ const MeetingSection = () => {
             </div>
 
             {/* Time Slots */}
-            {selectedDate && (
-              <div className="mt-6">
-                <h3 className="text-gray-800 font-semibold mb-4">
-                  {selectedDate}
-                </h3>
-                <div className="grid grid-cols-2 gap-4">
-                  {timeSlots.map((time) => (
-                    <button
-                      key={time}
-                      onClick={() => handleTimeSelect(time)}
-                      className={`p-2 rounded-lg text-sm font-medium ${
-                        selectedTime === time
-                          ? "bg-green-500 text-white"
-                          : "bg-[#09336F] text-white hover:bg-green-500"
-                      }`}
-                    >
-                      {time}
-                    </button>
-                  ))}
-                </div>
-              </div>
-                      )}
+            {
+              selectedDate && (
+      <div className="mt-6">
+        <h3 className="text-gray-800 font-semibold mb-4">{selectedDate}</h3>
+        <div className="grid grid-cols-2 gap-4">
+          {slotsWithStatus.map(({ time, isPast }) => (
+            <button
+              key={time}
+              onClick={() => !isPast && handleTimeSelect(time)} // Prevent clicking past slots
+              disabled={isPast} // Disable past slots
+              className={`p-2 rounded-lg text-sm font-medium ${
+                isPast
+                  ? "bg-gray-300 text-gray-500 cursor-not-allowed" // Style for past slots
+                  : selectedTime === time
+                  ? "bg-green-500 text-white" // Style for selected slot
+                  : "bg-[#09336F] text-white hover:bg-green-500"
+              }`}
+            >
+              {time}
+            </button>
+          ))}
+        </div>
+      </div>)}
                       <div className="mt-6">
           <h3 className="text-gray-800 font-semibold">Selected Date</h3>
           <p className="text-gray-600">
