@@ -3,11 +3,11 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#082541] text-white  text-center py-10 px-5">
-      <div className="max-w-4xl mx-auto ">
-        <div className="mb-6 ">
-          <div className="flex  justify-center items-center mb-6">
-            <Image src={"/bcgcmlogo.png"} alt="Logo" width={187} height={66} />{" "}
+    <footer className="bg-[#082541] text-white text-center py-10 px-5">
+      <div className="max-w-5xl mx-auto">
+        <div className="mb-6">
+          <div className="flex justify-center items-center mb-6">
+            <Image src={"/bcgcmlogo.png"} alt="Logo" width={187} height={66} />
           </div>
 
           <p className="text-lg leading-relaxed">
@@ -17,20 +17,45 @@ const Footer = () => {
             your unique business needs and objectives.
           </p>
         </div>
-        <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
-          <div className="flex items-center space-x-2">
-            <Image src={"/blocation.png"} alt="Logo" width={22} height={22} />{" "}
-            <span>Address Location</span>
+        
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 items-start">
+          {/* Address Section */}
+          <div className="flex flex-col items-center">
+            <div className="flex items-center space-x-2 mb-3">
+              <Image src={"/blocation.png"} alt="Location" width={22} height={22} />
+              <span className="font-semibold">Address</span>
+            </div>
+            <div className="text-center text-sm space-y-1">
+              <div>BCGCM India Pvt Ltd</div>
+              <div>C-302, Saisthaan, Plot No 4/5/6</div>
+              <div>Sector-29, Nerul East 400706</div>
+              <div>Navi Mumbai,Maharashtra</div>
+            </div>
           </div>
-          <div className="flex items-center space-x-2">
-            <Image src={"/bcall.png"} alt="Logo" width={22} height={22} />{" "}
-            <span>+91-1234567890</span>
+
+          {/* Phone Section */}
+          <div className="flex flex-col items-center">
+            <div className="flex items-center space-x-2 mb-3">
+              <Image src={"/bcall.png"} alt="Phone" width={22} height={22} />
+              <span className="font-semibold">Phone</span>
+            </div>
+            <div className="text-sm">
+              +91-8080738225
+            </div>
           </div>
-          <div className="flex items-center space-x-2">
-            <Image src={"/bmsg.png"} alt="Logo" width={22} height={22} />{" "}
-            <span>info@example.com</span>
+
+          {/* Email Section */}
+          <div className="flex flex-col items-center">
+            <div className="flex items-center space-x-2 mb-3">
+              <Image src={"/bmsg.png"} alt="Email" width={22} height={22} />
+              <span className="font-semibold">Email</span>
+            </div>
+            <div className="text-sm">
+              bcgcmindia@gmail.com
+            </div>
           </div>
         </div>
+
         <div className="mt-6 border-t border-gray-400 pt-4">
           <p className="text-xs">@ 2025 BCGCMi, All rights reserved</p>
         </div>

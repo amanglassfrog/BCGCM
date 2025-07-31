@@ -2,6 +2,12 @@
 import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
 import React, { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Separator } from "@/components/ui/separator";
 
 const months = [
   "January", "February", "March", "April", "May", "June",
@@ -25,7 +31,7 @@ const MeetingSection = () => {
   const [email, setEmail] = useState("");
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const [resendCountdown, setResendCountdown] = useState(0);
-  const [successMessage, setSuccessMessage] = useState(""); // To show success or error messages
+  const [successMessage, setSuccessMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [upiTransactionId, setUpiTransactionId] = useState("");
   const [transactionIdValid, setTransactionIdValid] = useState(false);
@@ -37,12 +43,11 @@ const MeetingSection = () => {
     const calculateSlotStatus = () => {
       const now = new Date();
 
-      // Check if the selected date is today
       const isToday =
         selectedDate &&
         new Date(selectedDate).toDateString() === now.toDateString();
 
-      const currentTime = now.getHours() * 60 + now.getMinutes(); // Current time in minutes since midnight
+      const currentTime = now.getHours() * 60 + now.getMinutes();
 
       const slots = timeSlots.map((slot) => {
         const [time, meridian] = slot.split(" ");
@@ -53,7 +58,7 @@ const MeetingSection = () => {
 
         return {
           time: slot,
-          isPast: isToday && slotTimeInMinutes <= currentTime, // Determine if the slot is in the past
+          isPast: isToday && slotTimeInMinutes <= currentTime,
         };
       });
 
@@ -63,13 +68,11 @@ const MeetingSection = () => {
     calculateSlotStatus();
   }, [selectedDate]);
 
-  // Check if a date is in the past
   const isDateInPast = (year, month, day) => {
     const date = new Date(year, month, day);
-    return date < today.setHours(0, 0, 0, 0); // Compare with today's date at midnight
+    return date < today.setHours(0, 0, 0, 0);
   };
 
-  // Handle navigation between months
   const handlePreviousMonth = () => {
     if (currentMonth === 0) {
       setCurrentMonth(11);
@@ -88,15 +91,13 @@ const MeetingSection = () => {
     }
   };
 
-  // Handle date selection
   const handleDateSelect = (day) => {
     if (!isDateInPast(currentYear, currentMonth, day)) {
       setSelectedDate(`${months[currentMonth]} ${day}, ${currentYear}`);
-      setSelectedTime(null); // Reset time if a new date is selected
+      setSelectedTime(null);
     }
   };
 
-  // Handle time selection
   const handleTimeSelect = (time) => {
     setSelectedTime(time);
   };
@@ -107,13 +108,14 @@ const MeetingSection = () => {
       setIsVerified(false);
       setOtpSent(false);
       setOtp("");
-      setIsButtonDisabled(false); // Re-enable the button when modal reopens
-      setSuccessMessage(""); // Clear success message when modal is closed
+      setIsButtonDisabled(false);
+      setSuccessMessage("");
     }
   };
+
   const sendOtp = async () => {
     try {
-      setIsButtonDisabled(true); // Disable the button while sending OTP
+      setIsButtonDisabled(true);
       const generateOtp = () =>
         Math.floor(100000 + Math.random() * 900000).toString();
       const generatedOtp = generateOtp();
@@ -122,8 +124,6 @@ const MeetingSection = () => {
 
       const apiKey = "APIA4hnyVgI135044";
       const message = `Dear User, Your OTP for login to MobiDoc app is ${generatedOtp}. Valid for 30 minutes. Please do not share this OTP. Regards, Team IntelGray`;
-
-      // const apiUrl = `https://www.bulksmsplans.com/api/send_sms?api_id=${apiKey}&api_password=8920359956&sms_type=OTP&sms_encoding=1&sender=MMABUS&number=${mobileNumber}&message=${message}&template_id=1207164447361211223`;
 
       const apiUrl = `https://www.bulksmsplans.com/api/send_sms?api_id=${apiKey}&api_password=8920359956&sms_type=Transactional&sms_encoding=text&sender=MMABUS&number=${mobileNumber}&message=${message}&template_id=168383`
 
@@ -137,13 +137,13 @@ const MeetingSection = () => {
       if (response.status === 200) {
         const data = await response.json();
         setOtpSent(true);
-        setResendCountdown(10); // Set countdown for resend OTP
+        setResendCountdown(10);
 
         let countdownInterval = setInterval(() => {
           setResendCountdown((prev) => {
             if (prev === 1) {
-              clearInterval(countdownInterval); // Clear interval when countdown ends
-              setIsButtonDisabled(false); // Re-enable button after the countdown
+              clearInterval(countdownInterval);
+              setIsButtonDisabled(false);
             }
             return prev - 1;
           });
@@ -152,16 +152,16 @@ const MeetingSection = () => {
         return data;
       } else {
         console.error("Error sending OTP:", response);
-        setIsButtonDisabled(false); // Re-enable button on error
+        setIsButtonDisabled(false);
       }
     } catch (error) {
       console.error("Error occurred while sending OTP:", error);
-      setIsButtonDisabled(false); // Re-enable button on error
+      setIsButtonDisabled(false);
     }
   };
 
   const verifyOtp = () => {
-    const storedOtp = localStorage.getItem("otp"); // Get OTP from localStorage
+    const storedOtp = localStorage.getItem("otp");
     if (otp === storedOtp) {
       setIsVerified(true);
       alert("OTP Verified Successfully!");
@@ -177,24 +177,8 @@ const MeetingSection = () => {
       return;
     }
 
-    setIsButtonDisabled(true); // Disable button to prevent multiple submissions
-    setSuccessMessage(""); // Clear previous success message if any
-
-    // const appointmentMessage = `
-    //   Dear ${name},
-    //   Your appointment is confirmed for ${selectedTime}. Thank you for using our service.
-    //   Regards,
-    //   Team The Agro Village
-    // `;
-
-    // const adminMessage = `
-    //   New appointment confirmation:
-    //   Name: ${name}
-    //   Email: ${email}
-    //   Mobile: ${mobileNumber}
-    //   Appointment Time: ${selectedTime}
-    //   UPI Transaction ID: ${upiTransactionId}
-    // `;
+    setIsButtonDisabled(true);
+    setSuccessMessage("");
 
     try {
       const responseUser = await fetch("/api/send", {
@@ -236,8 +220,8 @@ const MeetingSection = () => {
         throw new Error("Error sending email to admin.");
       }
       setIsLoading(false);
-      setSuccessMessage("Appointment Confirmed. Confirmation emails sent!"); // Show success message
-      setEmail(""); // Assuming you have state variables for each input field
+      setSuccessMessage("Appointment Confirmed. Confirmation emails sent!");
+      setEmail("");
       setName("");
       setMobileNumber("");
       setSelectedDate("");
@@ -246,285 +230,311 @@ const MeetingSection = () => {
     } catch (error) {
       setIsLoading(false);
       console.error("Error occurred while sending confirmation emails:", error);
-      setSuccessMessage("Failed to send confirmation emails."); // Show error message
+      setSuccessMessage("Failed to send confirmation emails.");
     } finally {
-      setIsButtonDisabled(false); // Re-enable button after the process is complete
-
+      setIsButtonDisabled(false);
     }
   };
+
   const handleUpiTransactionIdChange = (e) => {
     const value = e.target.value;
     setUpiTransactionId(value);
-    setTransactionIdValid(/^\d{12}$/.test(value)); // Validate UPI Transaction ID (12 digits)
+    setTransactionIdValid(/^\d{12}$/.test(value));
   };
 
   return (
     <>
       <Header />
       <section className="py-16 text-gray-800 bg-white">
-        <div className="max-w-7xl flex flex-col lg:flex-row justify-center mx-auto px-4 sm:px-6 lg:px-8 shadow-lg rounded-lg border border-[#082541]">
+        <div className="max-w-7xl flex flex-col lg:flex-row justify-center mx-auto px-4 sm:px-6 lg:px-8">
           {/* Left Section */}
-          <div className="p-6 w-full lg:w-1/2 max-w-3xl border-r-2">
-            <h1 className="text-red-600 text-3xl font-bold mb-4">BCGCMi</h1>
-            <h2 className="text-gray-800 text-2xl font-semibold mb-4">Meeting Name</h2>
-            <p className="text-gray-600 text-lg mb-4">
-              Do you currently need help with capital and have limited financing options?
-            </p>
-            <ul className="text-gray-600 list-disc pl-6">
-              <li>
-                Delayed project timelines due to a lack of access to the necessary capital.
-              </li>
-            </ul>
-          </div>
+          <Card className="p-6 w-full lg:w-1/2 max-w-3xl border-r-2 shadow-lg">
+            <CardHeader>
+              <Badge variant="destructive" className="w-fit mb-2">BCGCMi</Badge>
+              <CardTitle className="text-2xl">Meeting Name</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <CardDescription className="text-lg mb-4">
+                Do you currently need help with capital and have limited financing options?
+              </CardDescription>
+              <ul className="text-gray-600 list-disc pl-6">
+                <li>
+                  Delayed project timelines due to a lack of access to the necessary capital.
+                </li>
+              </ul>
+            </CardContent>
+          </Card>
 
           {/* Right Section */}
-          <div className="p-6 w-full lg:w-1/2 max-w-3xl mt-8 lg:mt-0 lg:ml-8">
-            <h2 className="text-gray-800 text-2xl font-semibold mb-4">
-              Select a Date & Time
-            </h2>
-
-            {/* Month and Year Selector */}
-            <div className="flex items-center justify-between mt-4 mb-6">
-              <button
-                onClick={handlePreviousMonth}
-                className="text-gray-600 hover:text-gray-800"
-              >
-                &lt; Previous
-              </button>
-              <h3 className="text-lg font-semibold">
-                {months[currentMonth]} {currentYear}
-              </h3>
-              <button
-                onClick={handleNextMonth}
-                className="text-gray-600 hover:text-gray-800"
-              >
-                Next &gt;
-              </button>
-            </div>
-
-            {/* Calendar Grid */}
-            <div className="grid grid-cols-7 text-center text-gray-700 mt-4 gap-2">
-              {["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].map((day) => (
-                <span key={day} className="font-semibold text-sm">
-                  {day}
-                </span>
-              ))}
-              {/* Render empty slots for days before the 1st */}
-              {Array.from(
-                { length: new Date(currentYear, currentMonth, 1).getDay() },
-                (_, index) => (
-                  <span key={`empty-${index}`} className="text-gray-400">
-                    {/* Empty */}
-                  </span>
-                )
-              )}
-              {/* Render days of the month */}
-              {Array.from({ length: daysInMonth }, (_, day) => (
-                <button
-                  key={day + 1}
-                  onClick={() => handleDateSelect(day + 1)}
-                  disabled={isDateInPast(currentYear, currentMonth, day + 1)}
-                  className={`p-2 rounded-lg ${isDateInPast(currentYear, currentMonth, day + 1)
-                    ? "text-gray-400 cursor-not-allowed"
-                    : selectedDate === `${months[currentMonth]} ${day + 1}, ${currentYear}`
-                      ? "bg-green-500 text-white"
-                      : "text-gray-700 hover:bg-green-100"
-                    }`}
+          <Card className="p-6 w-full lg:w-1/2 max-w-3xl mt-8 lg:mt-0 lg:ml-8 shadow-lg">
+            <CardHeader>
+              <CardTitle className="text-2xl">Select a Date & Time</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              {/* Month and Year Selector */}
+              <div className="flex items-center justify-between">
+                <Button
+                  variant="outline"
+                  onClick={handlePreviousMonth}
+                  className="text-gray-600 hover:text-gray-800"
                 >
-                  {day + 1}
-                </button>
-              ))}
-            </div>
+                  &lt; Previous
+                </Button>
+                <h3 className="text-lg font-semibold">
+                  {months[currentMonth]} {currentYear}
+                </h3>
+                <Button
+                  variant="outline"
+                  onClick={handleNextMonth}
+                  className="text-gray-600 hover:text-gray-800"
+                >
+                  Next &gt;
+                </Button>
+              </div>
 
-            {/* Time Slots */}
-            {
-              selectedDate && (
-                <div className="mt-6">
-                  <h3 className="text-gray-800 font-semibold mb-4">{selectedDate}</h3>
+              {/* Calendar Grid */}
+              <div className="grid grid-cols-7 text-center text-gray-700 gap-2">
+                {["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].map((day) => (
+                  <span key={day} className="font-semibold text-sm">
+                    {day}
+                  </span>
+                ))}
+                {Array.from(
+                  { length: new Date(currentYear, currentMonth, 1).getDay() },
+                  (_, index) => (
+                    <span key={`empty-${index}`} className="text-gray-400">
+                    </span>
+                  )
+                )}
+                {Array.from({ length: daysInMonth }, (_, day) => (
+                  <Button
+                    key={day + 1}
+                    onClick={() => handleDateSelect(day + 1)}
+                    disabled={isDateInPast(currentYear, currentMonth, day + 1)}
+                    variant={
+                      selectedDate === `${months[currentMonth]} ${day + 1}, ${currentYear}`
+                        ? "default"
+                        : "outline"
+                    }
+                    className={`p-2 rounded-lg ${isDateInPast(currentYear, currentMonth, day + 1)
+                        ? "text-gray-400 cursor-not-allowed"
+                        : selectedDate === `${months[currentMonth]} ${day + 1}, ${currentYear}`
+                          ? "bg-green-500 text-white"
+                          : "text-gray-700 hover:bg-green-100"
+                      }`}
+                  >
+                    {day + 1}
+                  </Button>
+                ))}
+              </div>
+
+              {/* Time Slots */}
+              {selectedDate && (
+                <div className="space-y-4">
+                  <h3 className="text-gray-800 font-semibold">{selectedDate}</h3>
                   <div className="grid grid-cols-2 gap-4">
                     {slotsWithStatus.map(({ time, isPast }) => (
-                      <button
+                      <Button
                         key={time}
-                        onClick={() => !isPast && handleTimeSelect(time)} // Prevent clicking past slots
-                        disabled={isPast} // Disable past slots
-                        className={`p-2 rounded-lg text-sm font-medium ${isPast
-                          ? "bg-gray-300 text-gray-500 cursor-not-allowed" // Style for past slots
-                          : selectedTime === time
-                            ? "bg-green-500 text-white" // Style for selected slot
-                            : "bg-[#09336F] text-white hover:bg-green-500"
+                        onClick={() => !isPast && handleTimeSelect(time)}
+                        disabled={isPast}
+                        variant={
+                          selectedTime === time
+                            ? "default"
+                            : "outline"
+                        }
+                        className={`${isPast
+                            ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                            : selectedTime === time
+                              ? "bg-green-500 text-white"
+                              : "bg-[#09336F] text-white hover:bg-green-500"
                           }`}
                       >
                         {time}
-                      </button>
+                      </Button>
                     ))}
                   </div>
-                </div>)}
-            <div className="mt-6">
-              <h3 className="text-gray-800 font-semibold">Selected Date</h3>
-              <p className="text-gray-600">
-                {selectedDate || "No date selected"}
-              </p>
-            </div>
-            {/* Timezone */}
-            <div className="mt-4">
-              <h3 className="text-gray-800 font-semibold">Time </h3>
-              <p className="text-gray-600">{selectedTime || "No time selected"}</p>
-            </div>
-
-            {/* Book Button */}
-            {selectedDate && selectedTime && (
-              <div className="mt-6">
-                <button onClick={toggleMenuModal} className="bg-[#09336F] text-white px-6 py-2 rounded-full font-semibold ">
-                  BOOK A CALL
-                </button>
-              </div>
-            )}
-            {isMenuModalOpen && (
-              <div className="fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center">
-                <div className="bg-white  p-8 rounded-lg shadow-xl max-w-xl w-full relative">
-                  <h2 className="text-2xl font-semibold mb-6">Book an Appointment</h2>
-
-                  {!isVerified ? (
-                    <>
-                      {!otpSent ? (
-                        <>
-                          {/* Full Name Field */}
-                          <div className="mb-4">
-                            <label className="block text-sm font-medium text-gray-700">Full Name</label>
-                            <input
-                              type="text"
-                              value={name}
-                              onChange={(e) => setName(e.target.value)}
-                              className="w-full p-3 border border-gray-300 rounded-lg"
-                              placeholder="Enter your full name"
-                              required
-                            />
-                            {name === '' && <p className="text-red-500 text-xs mt-2">Full name is required.</p>}
-                          </div>
-
-                          {/* Email Field */}
-                          <div className="mb-4">
-                            <label className="block text-sm font-medium text-gray-700">Email Address</label>
-                            <input
-                              type="email"
-                              value={email}
-                              onChange={(e) => setEmail(e.target.value)}
-                              className="w-full p-3 border border-gray-300 rounded-lg"
-                              placeholder="Enter your email address"
-                              required
-                            />
-                            {email && !/\S+@\S+\.\S+/.test(email) && <p className="text-red-500 text-xs mt-2">Please enter a valid email address.</p>}
-                          </div>
-
-                          {/* Mobile Number Field */}
-                          <div className="mb-4">
-                            <label className="block text-sm font-medium text-gray-700">Mobile Number</label>
-                            <input
-                              type="text"
-                              value={mobileNumber}
-                              onChange={(e) => setMobileNumber(e.target.value)}
-                              className="w-full p-3 border border-gray-300 rounded-lg"
-                              placeholder="Enter your mobile number"
-                              required
-                            />
-                            {mobileNumber && !/^\d{10}$/.test(mobileNumber) && <p className="text-red-500 text-xs mt-2">Please enter a valid 10-digit mobile number.</p>}
-                          </div>
-
-                          {/* Send OTP Button */}
-                          <button
-                            onClick={sendOtp}
-                            disabled={isButtonDisabled || !name || !email || !mobileNumber || !/\S+@\S+\.\S+/.test(email) || !/^\d{10}$/.test(mobileNumber)}
-                            className={`bg-[#43923f] text-white px-6 py-3 rounded-full w-full ${isButtonDisabled ? "opacity-50" : "hover:bg-[#43923f]"}`}
-                          >
-                            Send OTP
-                          </button>
-                        </>
-                      ) : (
-                        <>
-                          {/* OTP Field */}
-                          <div className="mb-4">
-                            <label className="block text-sm font-medium text-gray-700">Enter OTP</label>
-                            <input
-                              type="text"
-                              value={otp}
-                              onChange={(e) => setOtp(e.target.value)}
-                              className="w-full p-3 border border-gray-300 rounded-lg"
-                              placeholder="Enter OTP sent to your mobile"
-                              required
-                            />
-                            {otp && otp.length !== 6 && <p className="text-red-500 text-xs mt-2">OTP must be 6 digits.</p>}
-                          </div>
-
-                          {/* Verify OTP Button */}
-                          <button
-                            onClick={verifyOtp}
-                            disabled={isButtonDisabled || otp.length !== 6}
-                            className="bg-[#43923f] text-white px-6 py-3 rounded-full w-full hover:bg-[#43923f]"
-                          >
-                            Verify OTP
-                          </button>
-                        </>
-                      )}
-                    </>
-                  ) : (
-                    <>
-
-                      {selectedTime && (
-                        <div className="mb-4">
-                          <img
-                            src={"/QR.png"}
-                            alt="GPay QR Code"
-                            className="w-48 h-48 mx-auto"
-                          />
-                          <p className="text-sm text-gray-600 mt-2">Scan this QR code to pay for your appointment.</p>
-                        </div>
-                      )}
-
-                      {/* UPI Transaction ID */}
-                      <div className="mb-4">
-                        <label className="block text-sm font-medium text-gray-700">UPI Transaction ID</label>
-                        <input
-                          type="text"
-                          value={upiTransactionId}
-                          onChange={handleUpiTransactionIdChange}
-                          className="w-full p-3 border border-gray-300 rounded-lg"
-                          placeholder="Enter UPI Transaction ID"
-                          required
-                        />
-                        {upiTransactionId && !transactionIdValid && <p className="text-red-500 text-xs mt-2">UPI Transaction ID must be 12 digits.</p>}
-                      </div>
-                      {/* Confirm Appointment Button */}
-                      <button
-                        onClick={sendAppointmentConfirmation}
-                        disabled={isButtonDisabled || !transactionIdValid || !selectedDate || !selectedTime || isLoading}
-                        className="bg-green-600 text-white px-6 py-3 rounded-full w-full hover:bg-green-700 flex items-center justify-center"
-                      >
-                        {isLoading ? (
-                          <div className="spinner-border animate-spin border-t-2 border-b-2 border-white w-6 h-6 rounded-full"></div>
-                        ) : (
-                          "Confirm Appointment"
-                        )}
-                      </button>
-
-                      {successMessage && (
-                        <p className="mt-4 text-green-500">{successMessage}</p>
-                      )}
-                    </>
-                  )}
-
-                  {/* Close Modal Button */}
-                  <button
-                    onClick={toggleMenuModal}
-                    className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-2xl"
-                  >
-                    &times;
-                  </button>
                 </div>
+              )}
 
+              <Separator />
+
+              {/* Selected Date and Time Display */}
+              <div className="space-y-4">
+                <div>
+                  <Label className="text-gray-800 font-semibold">Selected Date</Label>
+                  <p className="text-gray-600">
+                    {selectedDate || "No date selected"}
+                  </p>
+                </div>
+                <div>
+                  <Label className="text-gray-800 font-semibold">Time</Label>
+                  <p className="text-gray-600">{selectedTime || "No time selected"}</p>
+                </div>
               </div>
-            )}
-          </div>
+
+              {/* Book Button */}
+              {selectedDate && selectedTime && (
+                <Button
+                  onClick={toggleMenuModal}
+                  className="bg-[#09336F] text-white px-6 py-2 rounded-full font-semibold w-full"
+                >
+                  BOOK A CALL
+                </Button>
+              )}
+            </CardContent>
+          </Card>
         </div>
+
+        {/* Modal */}
+        {isMenuModalOpen && (
+          <div className="fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center">
+            <Card className="bg-white p-8 rounded-lg shadow-xl max-w-xl w-full relative">
+              <CardHeader>
+                <CardTitle className="text-2xl">Book an Appointment</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {!isVerified ? (
+                  <>
+                    {!otpSent ? (
+                      <>
+                        {/* Full Name Field */}
+                        <div className="space-y-2">
+                          <Label htmlFor="name">Full Name</Label>
+                          <Input
+                            id="name"
+                            type="text"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            placeholder="Enter your full name"
+                            required
+                          />
+                          {name === '' && <p className="text-red-500 text-xs">Full name is required.</p>}
+                        </div>
+
+                        {/* Email Field */}
+                        <div className="space-y-2">
+                          <Label htmlFor="email">Email Address</Label>
+                          <Input
+                            id="email"
+                            type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            placeholder="Enter your email address"
+                            required
+                          />
+                          {email && !/\S+@\S+\.\S+/.test(email) && <p className="text-red-500 text-xs">Please enter a valid email address.</p>}
+                        </div>
+
+                        {/* Mobile Number Field */}
+                        <div className="space-y-2">
+                          <Label htmlFor="mobile">Mobile Number</Label>
+                          <Input
+                            id="mobile"
+                            type="text"
+                            value={mobileNumber}
+                            onChange={(e) => setMobileNumber(e.target.value)}
+                            placeholder="Enter your mobile number"
+                            required
+                          />
+                          {mobileNumber && !/^\d{10}$/.test(mobileNumber) && <p className="text-red-500 text-xs">Please enter a valid 10-digit mobile number.</p>}
+                        </div>
+
+                        {/* Send OTP Button */}
+                        <Button
+                          onClick={sendOtp}
+                          disabled={isButtonDisabled || !name || !email || !mobileNumber || !/\S+@\S+\.\S+/.test(email) || !/^\d{10}$/.test(mobileNumber)}
+                          className="w-full"
+                        >
+                          Send OTP
+                        </Button>
+                      </>
+                    ) : (
+                      <>
+                        {/* OTP Field */}
+                        <div className="space-y-2">
+                          <Label htmlFor="otp">Enter OTP</Label>
+                          <Input
+                            id="otp"
+                            type="text"
+                            value={otp}
+                            onChange={(e) => setOtp(e.target.value)}
+                            placeholder="Enter OTP sent to your mobile"
+                            required
+                          />
+                          {otp && otp.length !== 6 && <p className="text-red-500 text-xs">OTP must be 6 digits.</p>}
+                        </div>
+
+                        {/* Verify OTP Button */}
+                        <Button
+                          onClick={verifyOtp}
+                          disabled={isButtonDisabled || otp.length !== 6}
+                          className="w-full"
+                        >
+                          Verify OTP
+                        </Button>
+                      </>
+                    )}
+                  </>
+                ) : (
+                  <>
+                    {selectedTime && (
+                      <div className="text-center space-y-2">
+                        <img
+                          src={"/QR.png"}
+                          alt="GPay QR Code"
+                          className="w-48 h-48 mx-auto"
+                        />
+                        <p className="text-sm text-gray-600">Scan this QR code to pay for your appointment.</p>
+                      </div>
+                    )}
+
+                    {/* UPI Transaction ID */}
+                    <div className="space-y-2">
+                      <Label htmlFor="upi">UPI Transaction ID</Label>
+                      <Input
+                        id="upi"
+                        type="text"
+                        value={upiTransactionId}
+                        onChange={handleUpiTransactionIdChange}
+                        placeholder="Enter UPI Transaction ID"
+                        required
+                      />
+                      {upiTransactionId && !transactionIdValid && <p className="text-red-500 text-xs">UPI Transaction ID must be 12 digits.</p>}
+                    </div>
+
+                    {/* Confirm Appointment Button */}
+                    <Button
+                      onClick={sendAppointmentConfirmation}
+                      disabled={isButtonDisabled || !transactionIdValid || !selectedDate || !selectedTime || isLoading}
+                      className="w-full"
+                    >
+                      {isLoading ? (
+                        <div className="spinner-border animate-spin border-t-2 border-b-2 border-white w-6 h-6 rounded-full"></div>
+                      ) : (
+                        "Confirm Appointment"
+                      )}
+                    </Button>
+
+                    {successMessage && (
+                      <p className="text-green-500 text-center">{successMessage}</p>
+                    )}
+                  </>
+                )}
+
+                {/* Close Modal Button */}
+                <Button
+                  onClick={toggleMenuModal}
+                  variant="ghost"
+                  size="icon"
+                  className="absolute top-2 right-2"
+                >
+                  &times;
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+        )}
       </section>
       <Footer />
     </>
