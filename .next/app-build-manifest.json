@@ -1,61 +1,16 @@
 {
   "pages": {
-    "/_not-found/page": [
-      "static/chunks/webpack-14046c6b7fb715f0.js",
-      "static/chunks/4bd1b696-9d53a45aeb6e92ca.js",
-      "static/chunks/517-756df6cc6bf462a4.js",
-      "static/chunks/main-app-a15e37a43bd6d0fc.js",
-      "static/chunks/app/_not-found/page-468e2fae09f25fb9.js"
-    ],
     "/layout": [
-      "static/chunks/webpack-14046c6b7fb715f0.js",
-      "static/chunks/4bd1b696-9d53a45aeb6e92ca.js",
-      "static/chunks/517-756df6cc6bf462a4.js",
-      "static/chunks/main-app-a15e37a43bd6d0fc.js",
-      "static/css/307b98073147c8ee.css",
-      "static/chunks/app/layout-28f13e9e2296c9cb.js"
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/layout.css",
+      "static/chunks/app/layout.js"
     ],
     "/page": [
-      "static/chunks/webpack-14046c6b7fb715f0.js",
-      "static/chunks/4bd1b696-9d53a45aeb6e92ca.js",
-      "static/chunks/517-756df6cc6bf462a4.js",
-      "static/chunks/main-app-a15e37a43bd6d0fc.js",
-      "static/css/126acce611cc7b99.css",
-      "static/chunks/465-d215652b589faf2d.js",
-      "static/chunks/419-170c02f5dfd073c3.js",
-      "static/chunks/app/page-29ae627d2dfcd966.js"
-    ],
-    "/book-appointment/page": [
-      "static/chunks/webpack-14046c6b7fb715f0.js",
-      "static/chunks/4bd1b696-9d53a45aeb6e92ca.js",
-      "static/chunks/517-756df6cc6bf462a4.js",
-      "static/chunks/main-app-a15e37a43bd6d0fc.js",
-      "static/chunks/465-d215652b589faf2d.js",
-      "static/chunks/app/book-appointment/page-442a13e97d9e3a14.js"
-    ],
-    "/structured-private-project-funding/page": [
-      "static/chunks/webpack-14046c6b7fb715f0.js",
-      "static/chunks/4bd1b696-9d53a45aeb6e92ca.js",
-      "static/chunks/517-756df6cc6bf462a4.js",
-      "static/chunks/main-app-a15e37a43bd6d0fc.js",
-      "static/chunks/465-d215652b589faf2d.js",
-      "static/chunks/app/structured-private-project-funding/page-3fd43cebd159cdcd.js"
-    ],
-    "/global-businesss/page": [
-      "static/chunks/webpack-14046c6b7fb715f0.js",
-      "static/chunks/4bd1b696-9d53a45aeb6e92ca.js",
-      "static/chunks/517-756df6cc6bf462a4.js",
-      "static/chunks/main-app-a15e37a43bd6d0fc.js",
-      "static/chunks/465-d215652b589faf2d.js",
-      "static/chunks/app/global-businesss/page-0cd014406f42df42.js"
-    ],
-    "/structured-private-placement-programs/page": [
-      "static/chunks/webpack-14046c6b7fb715f0.js",
-      "static/chunks/4bd1b696-9d53a45aeb6e92ca.js",
-      "static/chunks/517-756df6cc6bf462a4.js",
-      "static/chunks/main-app-a15e37a43bd6d0fc.js",
-      "static/chunks/465-d215652b589faf2d.js",
-      "static/chunks/app/structured-private-placement-programs/page-2ff8be60579d14b5.js"
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/page.css",
+      "static/chunks/app/page.js"
     ]
   }
 }

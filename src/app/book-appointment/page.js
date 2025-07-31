@@ -15,7 +15,7 @@ const MeetingSection = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState("");
- const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(true);
   const [isMenuModalOpen, setIsMenuModalOpen] = useState(false);
   const [isVerified, setIsVerified] = useState(false);
   const [otpSent, setOtpSent] = useState(false);
@@ -26,12 +26,12 @@ const MeetingSection = () => {
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const [resendCountdown, setResendCountdown] = useState(0);
   const [successMessage, setSuccessMessage] = useState(""); // To show success or error messages
-  const [isLoading, setIsLoading] = useState(false); 
+  const [isLoading, setIsLoading] = useState(false);
   const [upiTransactionId, setUpiTransactionId] = useState("");
   const [transactionIdValid, setTransactionIdValid] = useState(false);
   const today = new Date();
   const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
-   const [slotsWithStatus, setSlotsWithStatus] = useState([]);
+  const [slotsWithStatus, setSlotsWithStatus] = useState([]);
 
   useEffect(() => {
     const calculateSlotStatus = () => {
@@ -99,9 +99,9 @@ const MeetingSection = () => {
   // Handle time selection
   const handleTimeSelect = (time) => {
     setSelectedTime(time);
-    };
-    
-     const toggleMenuModal = () => {
+  };
+
+  const toggleMenuModal = () => {
     setIsMenuModalOpen(!isMenuModalOpen);
     if (!isMenuModalOpen) {
       setIsVerified(false);
@@ -111,7 +111,7 @@ const MeetingSection = () => {
       setSuccessMessage(""); // Clear success message when modal is closed
     }
   };
-     const sendOtp = async () => {
+  const sendOtp = async () => {
     try {
       setIsButtonDisabled(true); // Disable the button while sending OTP
       const generateOtp = () =>
@@ -120,10 +120,12 @@ const MeetingSection = () => {
 
       localStorage.setItem("otp", generatedOtp);
 
-      const apiKey = "APIfJCi7asW85127";
+      const apiKey = "APIA4hnyVgI135044";
       const message = `Dear User, Your OTP for login to MobiDoc app is ${generatedOtp}. Valid for 30 minutes. Please do not share this OTP. Regards, Team IntelGray`;
 
-      const apiUrl = `https://www.bulksmsplans.com/api/send_sms?api_id=${apiKey}&api_password=qI5sERZC&sms_type=OTP&sms_encoding=1&sender=INTLGR&number=${mobileNumber}&message=${message}&template_id=1207164447361211223`;
+      // const apiUrl = `https://www.bulksmsplans.com/api/send_sms?api_id=${apiKey}&api_password=8920359956&sms_type=OTP&sms_encoding=1&sender=MMABUS&number=${mobileNumber}&message=${message}&template_id=1207164447361211223`;
+
+      const apiUrl = `https://www.bulksmsplans.com/api/send_sms?api_id=${apiKey}&api_password=8920359956&sms_type=Transactional&sms_encoding=text&sender=MMABUS&number=${mobileNumber}&message=${message}&template_id=168383`
 
       const response = await fetch(apiUrl, {
         method: "GET",
@@ -168,15 +170,15 @@ const MeetingSection = () => {
     }
   };
 
-    const sendAppointmentConfirmation = async () => {
-      setIsLoading(true);
-    if (!email || !name || !mobileNumber ||!selectedDate || !selectedTime || !upiTransactionId) {
+  const sendAppointmentConfirmation = async () => {
+    setIsLoading(true);
+    if (!email || !name || !mobileNumber || !selectedDate || !selectedTime || !upiTransactionId) {
       alert("Please provide all the required information.");
       return;
     }
 
     setIsButtonDisabled(true); // Disable button to prevent multiple submissions
-      setSuccessMessage(""); // Clear previous success message if any
+    setSuccessMessage(""); // Clear previous success message if any
 
     // const appointmentMessage = `
     //   Dear ${name},
@@ -206,10 +208,10 @@ const MeetingSection = () => {
           mobileNumber,
           selectedDate,
           selectedTime,
-            upiTransactionId,
+          upiTransactionId,
         }),
       });
-        console.log(responseUser)
+      console.log(responseUser)
 
       if (!responseUser.ok) {
         throw new Error("Error sending email to user.");
@@ -226,31 +228,31 @@ const MeetingSection = () => {
           mobileNumber,
           selectedDate,
           selectedTime,
-           upiTransactionId,
+          upiTransactionId,
         }),
       });
 
       if (!responseAdmin.ok) {
         throw new Error("Error sending email to admin.");
       }
- setIsLoading(false);
+      setIsLoading(false);
       setSuccessMessage("Appointment Confirmed. Confirmation emails sent!"); // Show success message
       setEmail(""); // Assuming you have state variables for each input field
-    setName("");
-    setMobileNumber("");
-    setSelectedDate("");
-    setSelectedTime("");
-    setUpiTransactionId("");
+      setName("");
+      setMobileNumber("");
+      setSelectedDate("");
+      setSelectedTime("");
+      setUpiTransactionId("");
     } catch (error) {
-         setIsLoading(false);
+      setIsLoading(false);
       console.error("Error occurred while sending confirmation emails:", error);
       setSuccessMessage("Failed to send confirmation emails."); // Show error message
     } finally {
       setIsButtonDisabled(false); // Re-enable button after the process is complete
-      
+
     }
   };
-   const handleUpiTransactionIdChange = (e) => {
+  const handleUpiTransactionIdChange = (e) => {
     const value = e.target.value;
     setUpiTransactionId(value);
     setTransactionIdValid(/^\d{12}$/.test(value)); // Validate UPI Transaction ID (12 digits)
@@ -322,13 +324,12 @@ const MeetingSection = () => {
                   key={day + 1}
                   onClick={() => handleDateSelect(day + 1)}
                   disabled={isDateInPast(currentYear, currentMonth, day + 1)}
-                  className={`p-2 rounded-lg ${
-                    isDateInPast(currentYear, currentMonth, day + 1)
-                      ? "text-gray-400 cursor-not-allowed"
-                      : selectedDate === `${months[currentMonth]} ${day + 1}, ${currentYear}`
+                  className={`p-2 rounded-lg ${isDateInPast(currentYear, currentMonth, day + 1)
+                    ? "text-gray-400 cursor-not-allowed"
+                    : selectedDate === `${months[currentMonth]} ${day + 1}, ${currentYear}`
                       ? "bg-green-500 text-white"
                       : "text-gray-700 hover:bg-green-100"
-                  }`}
+                    }`}
                 >
                   {day + 1}
                 </button>
@@ -338,38 +339,37 @@ const MeetingSection = () => {
             {/* Time Slots */}
             {
               selectedDate && (
-      <div className="mt-6">
-        <h3 className="text-gray-800 font-semibold mb-4">{selectedDate}</h3>
-        <div className="grid grid-cols-2 gap-4">
-          {slotsWithStatus.map(({ time, isPast }) => (
-            <button
-              key={time}
-              onClick={() => !isPast && handleTimeSelect(time)} // Prevent clicking past slots
-              disabled={isPast} // Disable past slots
-              className={`p-2 rounded-lg text-sm font-medium ${
-                isPast
-                  ? "bg-gray-300 text-gray-500 cursor-not-allowed" // Style for past slots
-                  : selectedTime === time
-                  ? "bg-green-500 text-white" // Style for selected slot
-                  : "bg-[#09336F] text-white hover:bg-green-500"
-              }`}
-            >
-              {time}
-            </button>
-          ))}
-        </div>
-      </div>)}
-                      <div className="mt-6">
-          <h3 className="text-gray-800 font-semibold">Selected Date</h3>
-          <p className="text-gray-600">
-            {selectedDate || "No date selected"}
-          </p>
-        </div>
-        {/* Timezone */}
-        <div className="mt-4">
-          <h3 className="text-gray-800 font-semibold">Time </h3>
-          <p className="text-gray-600">{selectedTime || "No time selected"}</p>
-        </div>
+                <div className="mt-6">
+                  <h3 className="text-gray-800 font-semibold mb-4">{selectedDate}</h3>
+                  <div className="grid grid-cols-2 gap-4">
+                    {slotsWithStatus.map(({ time, isPast }) => (
+                      <button
+                        key={time}
+                        onClick={() => !isPast && handleTimeSelect(time)} // Prevent clicking past slots
+                        disabled={isPast} // Disable past slots
+                        className={`p-2 rounded-lg text-sm font-medium ${isPast
+                          ? "bg-gray-300 text-gray-500 cursor-not-allowed" // Style for past slots
+                          : selectedTime === time
+                            ? "bg-green-500 text-white" // Style for selected slot
+                            : "bg-[#09336F] text-white hover:bg-green-500"
+                          }`}
+                      >
+                        {time}
+                      </button>
+                    ))}
+                  </div>
+                </div>)}
+            <div className="mt-6">
+              <h3 className="text-gray-800 font-semibold">Selected Date</h3>
+              <p className="text-gray-600">
+                {selectedDate || "No date selected"}
+              </p>
+            </div>
+            {/* Timezone */}
+            <div className="mt-4">
+              <h3 className="text-gray-800 font-semibold">Time </h3>
+              <p className="text-gray-600">{selectedTime || "No time selected"}</p>
+            </div>
 
             {/* Book Button */}
             {selectedDate && selectedTime && (
@@ -378,107 +378,107 @@ const MeetingSection = () => {
                   BOOK A CALL
                 </button>
               </div>
+            )}
+            {isMenuModalOpen && (
+              <div className="fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center">
+                <div className="bg-white  p-8 rounded-lg shadow-xl max-w-xl w-full relative">
+                  <h2 className="text-2xl font-semibold mb-6">Book an Appointment</h2>
+
+                  {!isVerified ? (
+                    <>
+                      {!otpSent ? (
+                        <>
+                          {/* Full Name Field */}
+                          <div className="mb-4">
+                            <label className="block text-sm font-medium text-gray-700">Full Name</label>
+                            <input
+                              type="text"
+                              value={name}
+                              onChange={(e) => setName(e.target.value)}
+                              className="w-full p-3 border border-gray-300 rounded-lg"
+                              placeholder="Enter your full name"
+                              required
+                            />
+                            {name === '' && <p className="text-red-500 text-xs mt-2">Full name is required.</p>}
+                          </div>
+
+                          {/* Email Field */}
+                          <div className="mb-4">
+                            <label className="block text-sm font-medium text-gray-700">Email Address</label>
+                            <input
+                              type="email"
+                              value={email}
+                              onChange={(e) => setEmail(e.target.value)}
+                              className="w-full p-3 border border-gray-300 rounded-lg"
+                              placeholder="Enter your email address"
+                              required
+                            />
+                            {email && !/\S+@\S+\.\S+/.test(email) && <p className="text-red-500 text-xs mt-2">Please enter a valid email address.</p>}
+                          </div>
+
+                          {/* Mobile Number Field */}
+                          <div className="mb-4">
+                            <label className="block text-sm font-medium text-gray-700">Mobile Number</label>
+                            <input
+                              type="text"
+                              value={mobileNumber}
+                              onChange={(e) => setMobileNumber(e.target.value)}
+                              className="w-full p-3 border border-gray-300 rounded-lg"
+                              placeholder="Enter your mobile number"
+                              required
+                            />
+                            {mobileNumber && !/^\d{10}$/.test(mobileNumber) && <p className="text-red-500 text-xs mt-2">Please enter a valid 10-digit mobile number.</p>}
+                          </div>
+
+                          {/* Send OTP Button */}
+                          <button
+                            onClick={sendOtp}
+                            disabled={isButtonDisabled || !name || !email || !mobileNumber || !/\S+@\S+\.\S+/.test(email) || !/^\d{10}$/.test(mobileNumber)}
+                            className={`bg-[#43923f] text-white px-6 py-3 rounded-full w-full ${isButtonDisabled ? "opacity-50" : "hover:bg-[#43923f]"}`}
+                          >
+                            Send OTP
+                          </button>
+                        </>
+                      ) : (
+                        <>
+                          {/* OTP Field */}
+                          <div className="mb-4">
+                            <label className="block text-sm font-medium text-gray-700">Enter OTP</label>
+                            <input
+                              type="text"
+                              value={otp}
+                              onChange={(e) => setOtp(e.target.value)}
+                              className="w-full p-3 border border-gray-300 rounded-lg"
+                              placeholder="Enter OTP sent to your mobile"
+                              required
+                            />
+                            {otp && otp.length !== 6 && <p className="text-red-500 text-xs mt-2">OTP must be 6 digits.</p>}
+                          </div>
+
+                          {/* Verify OTP Button */}
+                          <button
+                            onClick={verifyOtp}
+                            disabled={isButtonDisabled || otp.length !== 6}
+                            className="bg-[#43923f] text-white px-6 py-3 rounded-full w-full hover:bg-[#43923f]"
+                          >
+                            Verify OTP
+                          </button>
+                        </>
                       )}
-                       {isMenuModalOpen && (
-          <div className="fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center">
-            <div className="bg-white  p-8 rounded-lg shadow-xl max-w-xl w-full relative">
-  <h2 className="text-2xl font-semibold mb-6">Book an Appointment</h2>
+                    </>
+                  ) : (
+                    <>
 
-  {!isVerified ? (
-    <>
-      {!otpSent ? (
-        <>
-          {/* Full Name Field */}
-          <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">Full Name</label>
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className="w-full p-3 border border-gray-300 rounded-lg"
-              placeholder="Enter your full name"
-              required
-            />
-            {name === '' && <p className="text-red-500 text-xs mt-2">Full name is required.</p>}
-          </div>
-
-          {/* Email Field */}
-          <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">Email Address</label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="w-full p-3 border border-gray-300 rounded-lg"
-              placeholder="Enter your email address"
-              required
-            />
-            {email && !/\S+@\S+\.\S+/.test(email) && <p className="text-red-500 text-xs mt-2">Please enter a valid email address.</p>}
-          </div>
-
-          {/* Mobile Number Field */}
-          <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">Mobile Number</label>
-            <input
-              type="text"
-              value={mobileNumber}
-              onChange={(e) => setMobileNumber(e.target.value)}
-              className="w-full p-3 border border-gray-300 rounded-lg"
-              placeholder="Enter your mobile number"
-              required
-            />
-            {mobileNumber && !/^\d{10}$/.test(mobileNumber) && <p className="text-red-500 text-xs mt-2">Please enter a valid 10-digit mobile number.</p>}
-          </div>
-
-          {/* Send OTP Button */}
-          <button
-            onClick={sendOtp}
-            disabled={isButtonDisabled || !name || !email || !mobileNumber || !/\S+@\S+\.\S+/.test(email) || !/^\d{10}$/.test(mobileNumber)}
-            className={`bg-[#43923f] text-white px-6 py-3 rounded-full w-full ${isButtonDisabled ? "opacity-50" : "hover:bg-[#43923f]"}`}
-          >
-            Send OTP
-          </button>
-        </>
-      ) : (
-        <>
-          {/* OTP Field */}
-          <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">Enter OTP</label>
-            <input
-              type="text"
-              value={otp}
-              onChange={(e) => setOtp(e.target.value)}
-              className="w-full p-3 border border-gray-300 rounded-lg"
-              placeholder="Enter OTP sent to your mobile"
-              required
-            />
-            {otp && otp.length !== 6 && <p className="text-red-500 text-xs mt-2">OTP must be 6 digits.</p>}
-          </div>
-
-          {/* Verify OTP Button */}
-          <button
-            onClick={verifyOtp}
-            disabled={isButtonDisabled || otp.length !== 6}
-            className="bg-[#43923f] text-white px-6 py-3 rounded-full w-full hover:bg-[#43923f]"
-          >
-            Verify OTP
-          </button>
-        </>
-      )}
-    </>
-  ) : (
-    <>
-      
-{selectedTime &&  (
-      <div className="mb-4">
-        <img 
-          src={"/QR.png"}
-          alt="GPay QR Code"
-          className="w-48 h-48 mx-auto"
-        />
-        <p className="text-sm text-gray-600 mt-2">Scan this QR code to pay for your appointment.</p>
-      </div>
-    )}
+                      {selectedTime && (
+                        <div className="mb-4">
+                          <img
+                            src={"/QR.png"}
+                            alt="GPay QR Code"
+                            className="w-48 h-48 mx-auto"
+                          />
+                          <p className="text-sm text-gray-600 mt-2">Scan this QR code to pay for your appointment.</p>
+                        </div>
+                      )}
 
                       {/* UPI Transaction ID */}
                       <div className="mb-4">
@@ -493,10 +493,10 @@ const MeetingSection = () => {
                         />
                         {upiTransactionId && !transactionIdValid && <p className="text-red-500 text-xs mt-2">UPI Transaction ID must be 12 digits.</p>}
                       </div>
-      {/* Confirm Appointment Button */}
-      <button
+                      {/* Confirm Appointment Button */}
+                      <button
                         onClick={sendAppointmentConfirmation}
-                        disabled={isButtonDisabled || !transactionIdValid ||!selectedDate || !selectedTime || isLoading}
+                        disabled={isButtonDisabled || !transactionIdValid || !selectedDate || !selectedTime || isLoading}
                         className="bg-green-600 text-white px-6 py-3 rounded-full w-full hover:bg-green-700 flex items-center justify-center"
                       >
                         {isLoading ? (
@@ -506,23 +506,23 @@ const MeetingSection = () => {
                         )}
                       </button>
 
-      {successMessage && (
-        <p className="mt-4 text-green-500">{successMessage}</p>
-      )}
-    </>
-  )}
+                      {successMessage && (
+                        <p className="mt-4 text-green-500">{successMessage}</p>
+                      )}
+                    </>
+                  )}
 
-  {/* Close Modal Button */}
-  <button
-    onClick={toggleMenuModal}
-    className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-2xl"
-  >
-    &times;
-  </button>
-</div>
+                  {/* Close Modal Button */}
+                  <button
+                    onClick={toggleMenuModal}
+                    className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-2xl"
+                  >
+                    &times;
+                  </button>
+                </div>
 
-          </div>
-        )}
+              </div>
+            )}
           </div>
         </div>
       </section>
