@@ -2,9 +2,8 @@ import nodemailer from 'nodemailer';
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
-    const { name, email, mobileNumber,selectedDate, selectedTime,upiTransactionId } = req.body;
+    const { name, email, mobileNumber, selectedDate, selectedTime, upiTransactionId } = req.body;
 
-    // Validate required fields
     if (!name || !email || !mobileNumber || !selectedDate || !selectedTime || !upiTransactionId) {
       return res.status(400).json({ error: "Missing required fields: name, email, mobile number, upiTransactionId, or appointment time." });
     }
@@ -31,7 +30,7 @@ export default async function handler(req, res) {
         Appointment Time: ${selectedTime}
               UPI Transaction ID: ${upiTransactionId}
 `
-      
+
     };
 
     // Email to User
