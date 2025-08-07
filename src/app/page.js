@@ -140,29 +140,37 @@ export default function Home() {
         </div>
 
         {/* Hero Section */}
-        <section className="relative z-10 text-center text-white py-20 px-4 flex flex-col items-center justify-end h-[91vh]">
-          <div className="max-w-4xl mx-auto">
-            <Badge variant="secondary" className="mb-4 text-lg px-4 py-2 bg-green-500 text-white border-0">
-              Unique Financing Solutions
-            </Badge>
-            <h1 className="text-3xl sm:text-5xl font-bold mb-6">
-              for Accredited & Private Investors
-            </h1>
-            <p className="text-lg sm:text-xl mb-12 text-gray-200">
-              Enjoy easy and convenient access to your funds with our range of
-              checking account options. Benefit from features such as online and
-              mobile banking, debit cards, and free ATM access.
-            </p>
-            <Button asChild size="lg" className="rounded-full px-8 py-6 text-lg">
-              <Link href="/book-appointment">
-                BOOK A CALL
-              </Link>
-            </Button>
+        <section className="relative z-10 text-center text-white py-20 px-4 flex flex-col items-center justify-center h-[91vh]">
+          <div className="max-w-6xl mx-auto">
+            <div className="space-y-8">
+              {/* Main Heading */}
+              <div className="space-y-4">
+                <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold leading-tight">
+                  Strategic & Structured Private Funding
+                </h1>
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-blue-200">
+                  For
+                </h2>
+                <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-green-300">
+                  Entrepreneur, Startups and Turnarounds
+                </h3>
+              </div>
+              
+              {/* Description */}
+              {/* <div className="mt-12 max-w-3xl mx-auto">
+                <p className="text-lg sm:text-xl text-gray-200 leading-relaxed">
+                  Enjoy easy and convenient access to your funds with our range of
+                  checking account options. Benefit from features such as online and
+                  mobile banking, debit cards, and free ATM access.
+                </p>
+              </div> */}
+            </div>
           </div>
         </section>
+       
       </div>
 
-      {/* Services Section */}
+      {/* New Services Section */}
       <section id='solutions' className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -172,25 +180,28 @@ export default function Home() {
             <h2 className="text-4xl font-bold text-gray-900">
               The Services We Offer <span className="text-green-500">For You</span>
             </h2>
-            <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
-              Enjoy easy and convenient access to your funds with our range of
-              checking account options. Benefit from features such as online
-              and mobile banking, debit cards, and free ATM access.
-            </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Service Card 1 */}
-            <Link href="/structured-private-project-funding">
-              <Card className="h-full hover:scale-105 transform transition duration-300 cursor-pointer border-0 shadow-lg bg-[#082541] text-white">
+            {/* Card 1: Structured Private Project Funding */}
+            <Link href="/structured-private-project-funding" className="block">
+              <Card className="h-full hover:scale-105 hover:-translate-y-2 transform transition-all duration-500 ease-in-out cursor-pointer border-0 shadow-lg bg-[#082541] text-white hover:shadow-2xl hover:shadow-blue-500/20">
                 <CardHeader>
                   <div className="flex items-center justify-between">
-                    <CardTitle className="text-2xl">Structured Private Project Funding</CardTitle>
-                    <Image src="/arrowicon.png" alt="Arrow" width={34} height={34} />
+                    <CardTitle className="text-2xl hover:text-blue-200 transition-colors duration-300">
+                      Structured Private Project Funding
+                    </CardTitle>
+                    <Image 
+                      src="/arrowicon.png" 
+                      alt="Arrow" 
+                      width={34} 
+                      height={34} 
+                      className="hover:translate-x-2 transition-transform duration-300" 
+                    />
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-lg text-gray-300">
+                  <CardDescription className="text-lg text-gray-300 hover:text-gray-100 transition-colors duration-300">
                     Enjoy the convenience of accessing your accounts anytime,
                     anywhere through our secure online banking platform. Check
                     balances, transfer funds, and pay bills with ease.
@@ -199,17 +210,25 @@ export default function Home() {
               </Card>
             </Link>
 
-            {/* Service Card 2 */}
-            <Link href="/structured-private-placement-programs">
-              <Card className="h-full hover:scale-105 transform transition duration-300 cursor-pointer border-0 shadow-lg bg-[#082541] text-white">
+            {/* Card 2: Structured Private Placement Programs */}
+            <Link href="/structured-private-placement-programs" className="block">
+              <Card className="h-full hover:scale-105 hover:-translate-y-2 transform transition-all duration-500 ease-in-out cursor-pointer border-0 shadow-lg bg-[#082541] text-white hover:shadow-2xl hover:shadow-blue-500/20">
                 <CardHeader>
                   <div className="flex items-center justify-between">
-                    <CardTitle className="text-2xl">Structured Private Placement Programs</CardTitle>
-                    <Image src="/arrowicon.png" alt="Arrow" width={34} height={34} />
+                    <CardTitle className="text-2xl hover:text-blue-200 transition-colors duration-300">
+                      Structured Private Placement Programs
+                    </CardTitle>
+                    <Image 
+                      src="/arrowicon.png" 
+                      alt="Arrow" 
+                      width={34} 
+                      height={34} 
+                      className="hover:translate-x-2 transition-transform duration-300" 
+                    />
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-lg text-gray-300">
+                  <CardDescription className="text-lg text-gray-300 hover:text-gray-100 transition-colors duration-300">
                     Stay connected to your finances on the go with our user-friendly
                     mobile banking app. Easily manage your accounts, deposit
                     checks, and make payments from your smartphone or tablet.
@@ -218,17 +237,25 @@ export default function Home() {
               </Card>
             </Link>
 
-            {/* Service Card 3 */}
-            <Link href="/global-businesss">
-              <Card className="h-full hover:scale-105 transform transition duration-300 cursor-pointer border-0 shadow-lg bg-[#082541] text-white">
+            {/* Card 3: Global Businesss */}
+            <Link href="/global-businesss" className="block">
+              <Card className="h-full hover:scale-105 hover:-translate-y-2 transform transition-all duration-500 ease-in-out cursor-pointer border-0 shadow-lg bg-[#082541] text-white hover:shadow-2xl hover:shadow-blue-500/20">
                 <CardHeader>
                   <div className="flex items-center justify-between">
-                    <CardTitle className="text-2xl">Global Businesss</CardTitle>
-                    <Image src="/arrowicon.png" alt="Arrow" width={34} height={34} />
+                    <CardTitle className="text-2xl hover:text-blue-200 transition-colors duration-300">
+                      Global Businesss
+                    </CardTitle>
+                    <Image 
+                      src="/arrowicon.png" 
+                      alt="Arrow" 
+                      width={34} 
+                      height={34} 
+                      className="hover:translate-x-2 transition-transform duration-300" 
+                    />
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-lg text-gray-300">
+                  <CardDescription className="text-lg text-gray-300 hover:text-gray-100 transition-colors duration-300">
                     Stay connected to your finances on the go with our user-friendly
                     mobile banking app. Easly manage your accounts, deposit
                     checks, and make payments from your smartphone or tablet.

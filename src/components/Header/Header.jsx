@@ -23,18 +23,18 @@ export default function Header() {
           </div>
           {/* Menu items for desktop */}
           <nav className="hidden md:flex space-x-6 ml-auto items-center">
-            <a
-              href="#solutions"
+            <Link
+              href="/#solutions"
               className="text-[#09336F] text-xl hover:text-gray-700 transition duration-300"
             >
               SOLUTIONS
-            </a>
-            <a
-              href="#about"
+            </Link>
+            <Link
+              href="/#about"
               className="text-[#09336F] text-xl hover:text-gray-700 transition duration-300"
             >
               ABOUT US
-            </a>
+            </Link>
             <a
               href="/book-appointment"
               className="ml-6 bg-[#09336F] px-6 py-3 rounded-full text-white font-bold transition duration-300"
@@ -91,18 +91,18 @@ export default function Header() {
         {isMenuOpen && (
           <div className="md:hidden absolute  left-0 w-full bg-white z-50">
             <div className="space-y-1 px-4 pt-5 pb-3 sm:px-6">
-              <a
-                href="#solutions"
+              <Link
+                href="/#solutions"
                 className="block text-black text-xl hover:bg-gray-200 rounded px-3 py-2"
               >
                 SOLUTIONS
-              </a>
-              <a
-                href="#about"
+              </Link>
+              <Link
+                href="/#about"
                 className="block text-black text-xl hover:bg-gray-200 rounded px-3 py-2"
               >
                 ABOUT US
-              </a>
+              </Link>
               <a
                 href="#book"
                 className="block bg-[#09336F] px-6 py-3 rounded-full font-bold text-white text-center"
