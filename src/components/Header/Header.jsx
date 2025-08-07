@@ -10,48 +10,38 @@ export default function Header() {
     setIsMenuOpen(!isMenuOpen);
   };
   return (
-    <header className="bg-[url('/bcgcmbackground.png')] bg-cover bg-center text-white">
+    <header className="sticky top-0 z-50 bg-white text-white shadow">
       <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
-          <div className="flex gap-12 items-center">
-            {/* Logo */}
-            <div className="flex-shrink-0">
-              <Link href="/">
-                <Image
-                  src="/bcgcmlogo.png"
-                  alt="Logo"
-                  width={167}
-                  height={100}
-                />
-              </Link>
-            </div>
-
-            {/* Menu items for desktop */}
-            <nav className="hidden md:flex space-x-6">
-              <a
-                href="#solutions"
-                className="text-white text-xl hover:text-gray-300 transition duration-300"
-              >
-                SOLUTIONS
-              </a>
-              <a
-                href="#about"
-                className="text-white text-xl hover:text-gray-300 transition duration-300"
-              >
-                ABOUT US
-              </a>
-            </nav>
+          {/* Logo */}
+          <div className="flex-shrink-0">
+            <Link href="/">
+              <span className="text-3xl font-bold tracking-wide" style={{ fontFamily: 'Times New Roman, Times, serif' }}>
+                <span style={{ color: '#09336F' }}>BCGCM</span><span style={{ color: '#B22222' }}>i</span>
+              </span>
+            </Link>
           </div>
-
-          {/* Call-to-action button for desktop */}
-          <div className="hidden md:block">
+          {/* Menu items for desktop */}
+          <nav className="hidden md:flex space-x-6 ml-auto items-center">
+            <a
+              href="#solutions"
+              className="text-[#09336F] text-xl hover:text-gray-700 transition duration-300"
+            >
+              SOLUTIONS
+            </a>
+            <a
+              href="#about"
+              className="text-[#09336F] text-xl hover:text-gray-700 transition duration-300"
+            >
+              ABOUT US
+            </a>
             <a
               href="/book-appointment"
-              className="bg-white px-6 py-3 rounded-full text-[#09336F] font-bold transition duration-300"
+              className="ml-6 bg-[#09336F] px-6 py-3 rounded-full text-white font-bold transition duration-300"
             >
               BOOK A CALL
             </a>
-          </div>
+          </nav>
 
           {/* Mobile menu button */}
           <div className="md:hidden">
@@ -115,7 +105,7 @@ export default function Header() {
               </a>
               <a
                 href="#book"
-                className="block bg-white px-6 py-3 rounded-full font-bold text-[#09336F] text-center"
+                className="block bg-[#09336F] px-6 py-3 rounded-full font-bold text-white text-center"
               >
                 BOOK A CALL
               </a>

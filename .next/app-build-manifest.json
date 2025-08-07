@@ -11,26 +11,6 @@
       "static/chunks/main-app.js",
       "static/css/app/page.css",
       "static/chunks/app/page.js"
-    ],
-    "/structured-private-project-funding/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/structured-private-project-funding/page.js"
-    ],
-    "/structured-private-placement-programs/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/structured-private-placement-programs/page.js"
-    ],
-    "/global-businesss/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/global-businesss/page.js"
-    ],
-    "/book-appointment/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/book-appointment/page.js"
     ]
   }
 }

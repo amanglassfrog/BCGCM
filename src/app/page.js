@@ -66,6 +66,7 @@ export default function Home() {
 
   return (
     <>
+      <Header />
       <div className="relative h-screen">
         {/* Background Video */}
         <video
@@ -81,114 +82,61 @@ export default function Home() {
         {/* Overlay Content */}
         <div className="relative z-10">
           {/* Header Section */}
+          {/*
           <header className="text-white">
             <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex justify-between items-center py-4">
                 <div className="flex gap-12 items-center">
-                  {/* Logo */}
+                  // Logo
                   <div className="flex-shrink-0">
                     <Link href="/">
                       <Image src="/bcgcmlogo.png" alt="Logo" width={167} height={100} />
                     </Link>
                   </div>
-
-                  {/* Menu items for desktop */}
+                  // Menu items for desktop
                   <nav className="hidden md:flex space-x-6">
-                    <a
-                      href="#solutions"
-                      className="text-white text-xl hover:text-gray-300 transition duration-300"
-                    >
-                      SOLUTIONS
-                    </a>
-                    <a
-                      href="#about"
-                      className="text-white text-xl hover:text-gray-300 transition duration-300"
-                    >
-                      ABOUT US
-                    </a>
+                    <a href="#solutions" className="text-white text-xl hover:text-gray-300 transition duration-300">SOLUTIONS</a>
+                    <a href="#about" className="text-white text-xl hover:text-gray-300 transition duration-300">ABOUT US</a>
                   </nav>
                 </div>
-
-                {/* Call-to-action button for desktop */}
+                // Call-to-action button for desktop
                 <div className="hidden md:block">
                   <Button asChild variant="secondary" size="lg" className="rounded-full">
-                    <Link href="/book-appointment">
-                      BOOK A CALL
-                    </Link>
+                    <Link href="/book-appointment">BOOK A CALL</Link>
                   </Button>
                 </div>
-
-                {/* Mobile menu button */}
+                // Mobile menu button
                 <div className="md:hidden">
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="text-white hover:bg-white/10"
-                    onClick={toggleMenu}
-                  >
+                  <Button variant="ghost" size="icon" className="text-white hover:bg-white/10" onClick={toggleMenu}>
                     {isMenuOpen ? (
                       // Close Icon
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M6 18L18 6M6 6l12 12"
-                        />
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                       </svg>
                     ) : (
                       // Hamburger Icon
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M4 6h16M4 12h16M4 18h16"
-                        />
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
                       </svg>
                     )}
                   </Button>
                 </div>
               </div>
-
-              {/* Mobile menu dropdown */}
+              // Mobile menu dropdown
               {isMenuOpen && (
                 <Card className="md:hidden absolute left-0 w-full z-50">
                   <CardContent className="space-y-1 px-4 pt-5 pb-3 sm:px-6">
-                    <a
-                      href="#solutions"
-                      className="block text-black text-xl hover:bg-gray-200 rounded px-3 py-2"
-                    >
-                      SOLUTIONS
-                    </a>
-                    <a
-                      href="#about"
-                      className="block text-black text-xl hover:bg-gray-200 rounded px-3 py-2"
-                    >
-                      ABOUT US
-                    </a>
+                    <a href="#solutions" className="block text-black text-xl hover:bg-gray-200 rounded px-3 py-2">SOLUTIONS</a>
+                    <a href="#about" className="block text-black text-xl hover:bg-gray-200 rounded px-3 py-2">ABOUT US</a>
                     <Button asChild className="w-full rounded-full">
-                      <Link href="/book-appointment">
-                        BOOK A CALL
-                      </Link>
+                      <Link href="/book-appointment">BOOK A CALL</Link>
                     </Button>
                   </CardContent>
                 </Card>
               )}
             </div>
           </header>
+          */}
         </div>
 
         {/* Hero Section */}
@@ -413,7 +361,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-[#082541] text-white py-12 px-6 sm:px-12 lg:px-24">
+      <section className="bg-white text-[#082541] py-12 px-6 sm:px-12 lg:px-24">
         <div className="max-w-7xl mx-auto text-center">
           <Badge variant="secondary" className="mb-4 text-green-400 bg-green-400/20 border-green-400">
             Get Started Today
@@ -427,15 +375,11 @@ export default function Home() {
             designed to guide you through the diverse financial programs and identify the optimal
             solution tailored to your unique business needs and objectives.
           </p>
-          <Button asChild size="lg" variant="secondary" className="rounded-full px-8 py-6 text-lg">
-            <Link href="/book-appointment">
-              BOOK A CALL
-            </Link>
-          </Button>
         </div>
       </section>
 
       {/* Testimonials Section */}
+      {/*
       <section className="bg-white py-12 px-6 sm:px-12 lg:px-24">
         <div className="text-center mb-12">
           <Badge variant="outline" className="mb-4 text-green-500 border-green-500">
@@ -451,7 +395,7 @@ export default function Home() {
         </div>
 
         <div className="flex flex-col items-center w-full">
-          {/* Swiper Slider */}
+          // Swiper Slider
           <Swiper
             slidesPerView={1}
             spaceBetween={20}
@@ -494,7 +438,7 @@ export default function Home() {
             ))}
           </Swiper>
 
-          {/* Custom Navigation Buttons */}
+          // Custom Navigation Buttons
           <div className="flex justify-center mt-8 gap-8">
             <Button
               variant="ghost"
@@ -513,6 +457,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      */}
 
       <Footer />
     </>
