@@ -145,14 +145,17 @@ export default function Home() {
             <div className="space-y-8">
               {/* Main Heading */}
               <div className="space-y-4">
-                <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold leading-tight">
+                <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold leading-tight">
                   Strategic & Structured Private Funding
                 </h1>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-blue-200">
+                <h2 className="text-3xl sm:text-2xl lg:text-4xl font-semibold text-blue-200">
                   For
                 </h2>
-                <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-green-300">
+                <h3 className="text-3xl sm:text-3xl lg:text-4xl font-bold text-green-300">
                   Entrepreneur, Startups and Turnarounds
+                </h3>
+                <h3 className="text-2xl sm:text-2xl lg:text-2xl font-semibold text-gray-200 mt-6">
+                  Expert Guidance Tailored to You with a Personal Touch
                 </h3>
               </div>
               
