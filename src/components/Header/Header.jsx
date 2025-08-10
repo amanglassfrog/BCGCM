@@ -16,7 +16,7 @@ export default function Header() {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/">
-              <span className="text-3xl font-bold tracking-wide" style={{ fontFamily: 'Times New Roman, Times, serif' }}>
+              <span className="text-xl font-bold tracking-wide" style={{ fontFamily: 'Times New Roman, Times, serif' }}>
                 <span style={{ color: '#09336F' }}>BCGCM</span><span style={{ color: '#B22222' }}>i</span>
               </span>
             </Link>
@@ -25,15 +25,15 @@ export default function Header() {
           <nav className="hidden md:flex space-x-6 ml-auto items-center">
             <Link
               href="/#solutions"
-              className="text-[#09336F] text-xl hover:text-gray-700 transition duration-300"
+              className="text-[#09336F] text-lg hover:text-gray-700 transition duration-300"
             >
-              SOLUTIONS
+              Solutions
             </Link>
             <Link
               href="/#about"
-              className="text-[#09336F] text-xl hover:text-gray-700 transition duration-300"
+              className="text-[#09336F] text-lg hover:text-gray-700 transition duration-300"
             >
-              ABOUT US
+              About Us
             </Link>
             <a
               href="/book-appointment"

@@ -250,7 +250,10 @@ const MeetingSection = () => {
           {/* Left Section */}
           <Card className="p-6 w-full lg:w-1/2 max-w-3xl border-r-2 shadow-lg">
             <CardHeader>
-              <Badge variant="destructive" className="w-fit mb-2">BCGCMi</Badge>
+              <div className="w-fit mb-2">
+                <span className="text-[#082541] font-serif text-lg font-semibold">BCGCM</span>
+                <span className="text-red-600 font-serif text-lg font-semibold">i</span>
+              </div>
               <CardTitle className="text-2xl">Meeting Name</CardTitle>
             </CardHeader>
             <CardContent>

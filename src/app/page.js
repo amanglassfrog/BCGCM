@@ -148,14 +148,14 @@ export default function Home() {
                 <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold leading-tight">
                   Strategic & Structured Private Funding
                 </h1>
-                <h2 className="text-3xl sm:text-2xl lg:text-4xl font-semibold text-blue-200">
-                  For
+                <h2 className="text-3xl sm:text-2xl lg:text-4xl font-semibold text-blue-200 italic">
+                 for
                 </h2>
                 <h3 className="text-3xl sm:text-3xl lg:text-4xl font-bold text-green-300">
-                  Entrepreneur, Startups and Turnarounds
+                  Entrepreneurs
                 </h3>
                 <h3 className="text-2xl sm:text-2xl lg:text-2xl font-semibold text-gray-200 mt-6">
-                  Expert Guidance Tailored to You with a Personal Touch
+                Customised Business & Project Funding l High Yield Investment Programs
                 </h3>
               </div>
               
@@ -173,14 +173,19 @@ export default function Home() {
        
       </div>
 
+      {/* Separator after Hero Section */}
+      <Separator className="my-8 bg-gray-300" />
+
       {/* New Services Section */}
       <section id='solutions' className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <Badge variant="outline" className="mb-4 text-green-500 border-green-500">
+            {/* <Badge variant="outline" className="mb-4 text-green-500 border-green-500">
               Our Services
-            </Badge>
-            <h2 className="text-4xl font-bold text-gray-900">
+            </Badge> */}
+            <h1 className="text-4xl font-bold text-gray-900 mb-12">Our Services</h1>
+            <div> </div>
+            <h2 className="text-2xl text-gray-900">
               The Services We Offer <span className="text-green-500">For You</span>
             </h2>
           </div>
@@ -205,9 +210,7 @@ export default function Home() {
                 </CardHeader>
                 <CardContent>
                   <CardDescription className="text-lg text-gray-300 hover:text-gray-100 transition-colors duration-300">
-                    Enjoy the convenience of accessing your accounts anytime,
-                    anywhere through our secure online banking platform. Check
-                    balances, transfer funds, and pay bills with ease.
+                  We provide well designed Structured Private Project Funding in various business sectors
                   </CardDescription>
                 </CardContent>
               </Card>
@@ -232,9 +235,7 @@ export default function Home() {
                 </CardHeader>
                 <CardContent>
                   <CardDescription className="text-lg text-gray-300 hover:text-gray-100 transition-colors duration-300">
-                    Stay connected to your finances on the go with our user-friendly
-                    mobile banking app. Easily manage your accounts, deposit
-                    checks, and make payments from your smartphone or tablet.
+                  We will advise and guide you through various domestic opportunities in obtaining High Yield / Returns
                   </CardDescription>
                 </CardContent>
               </Card>
@@ -259,9 +260,7 @@ export default function Home() {
                 </CardHeader>
                 <CardContent>
                   <CardDescription className="text-lg text-gray-300 hover:text-gray-100 transition-colors duration-300">
-                    Stay connected to your finances on the go with our user-friendly
-                    mobile banking app. Easly manage your accounts, deposit
-                    checks, and make payments from your smartphone or tablet.
+                  We will advise and guide you through various International Opportunities of High Yield Programs / Returns
                   </CardDescription>
                 </CardContent>
               </Card>
@@ -270,18 +269,22 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Separator after Services Section */}
+      <Separator className="my-8 bg-gray-300" />
+
       {/* About Section */}
       <section id='about' className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <Badge variant="outline" className="mb-4 text-green-500 border-green-500">
-              About BCGCM India Ltd
-            </Badge>
-            <h2 className="text-3xl md:text-6xl font-semibold text-gray-900">
+          <div className="text-center mb-8">
+              {/* <Badge variant="outline" className="mb-4 text-green-500 border-green-500">
+                About BCGCM India Ltd
+              </Badge> */}
+            <h1 className="text-3xl font-bold text-gray-900 mb-8">About Us</h1>
+            <h2 className="text-2xl md:text-6xl font-semibold text-gray-900">
               Strategic Investment & <span className="text-green-500">Funding Agency</span>
             </h2>
             <p className="mt-4 text-lg text-gray-600 max-w-4xl mx-auto">
-              BCGCM India Ltd will serve as a strategic investment and funding agency for high-potential INDIA, GLOBAL startups,
+              BCGCM India Pvt Ltd will serve as a strategic investment and funding agency for high-potential INDIA, GLOBAL startups,
               with a focus on early-stage venture funding, technical and operational due diligence, post-investment support and acceleration,
               and AI-powered pipeline development.
             </p>
@@ -332,9 +335,10 @@ export default function Home() {
 
           {/* Security & Privacy Section */}
           <div className="text-center mb-12">
-            <Badge variant="outline" className="mb-4 text-green-500 border-green-500">
+            {/* <Badge variant="outline" className="mb-4 text-green-500 border-green-500">
               Security & Privacy
-            </Badge>
+            </Badge> */}
+            
             <h3 className="text-2xl md:text-4xl font-semibold text-gray-900">
               We Take Your <span className="text-green-500">Security</span> and <span className="text-green-500">Privacy</span> Seriously
             </h3>
@@ -390,12 +394,15 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Separator after About Section */}
+      <Separator className="my-8 bg-gray-300" />
+
       {/* CTA Section */}
       <section className="bg-white text-[#082541] py-12 px-6 sm:px-12 lg:px-24">
         <div className="max-w-7xl mx-auto text-center">
-          <Badge variant="secondary" className="mb-4 text-green-400 bg-green-400/20 border-green-400">
+          {/* <Badge variant="secondary" className="mb-4 text-green-400 bg-green-400/20 border-green-400">
             Get Started Today
-          </Badge>
+          </Badge> */}
           <h2 className="text-2xl sm:text-3xl lg:text-6xl font-bold mb-4">
             Not sure which pathway<br />
             is <span className="text-green-400">right for you?</span>
@@ -405,8 +412,16 @@ export default function Home() {
             designed to guide you through the diverse financial programs and identify the optimal
             solution tailored to your unique business needs and objectives.
           </p>
+          <Link href="/book-appointment">
+            <Button className="bg-green-400 hover:bg-green-500 text-white px-8 py-3 text-lg font-semibold rounded-lg transition-colors duration-300">
+              Book Your Consultation
+            </Button>
+          </Link>
         </div>
       </section>
+
+      {/* Separator after CTA Section */}
+      <Separator className="my-8 bg-gray-300" />
 
       {/* Testimonials Section */}
       {/*
@@ -462,32 +477,32 @@ export default function Home() {
                     <CardDescription className="text-sm sm:text-base text-gray-700 mb-4 h-[70%]">
                       {testimonial.text}
                     </CardDescription>
-                  </CardContent>
-                </Card>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+              </CardContent>
+            </Card>
+          </SwiperSlide>
+        ))}
+      </Swiper>
 
-          // Custom Navigation Buttons
-          <div className="flex justify-center mt-8 gap-8">
-            <Button
-              variant="ghost"
-              size="icon"
-              className="custom-prev w-12 h-12 rounded-full text-white hover:bg-white/10"
-            >
-              <img src="/leftButton.png" alt="Left Arrow" width={67} height={67} />
-            </Button>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="custom-next w-12 h-12 rounded-full text-white hover:bg-white/10"
-            >
-              <img src="/rightButton.png" alt="Right Arrow" width={67} height={67} />
-            </Button>
-          </div>
-        </div>
-      </section>
-      */}
+      // Custom Navigation Buttons
+      <div className="flex justify-center mt-8 gap-8">
+        <Button
+          variant="ghost"
+          size="icon"
+          className="custom-prev w-12 h-12 rounded-full text-white hover:bg-white/10"
+        >
+          <img src="/leftButton.png" alt="Left Arrow" width={67} height={67} />
+        </Button>
+        <Button
+          variant="ghost"
+          size="icon"
+          className="custom-next w-12 h-12 rounded-full text-white hover:bg-white/10"
+        >
+          <img src="/rightButton.png" alt="Right Arrow" width={67} height={67} />
+        </Button>
+      </div>
+    </div>
+  </section>
+  */}
 
       <Footer />
     </>
