@@ -152,10 +152,10 @@ export default function Home() {
                  for
                 </h2>
                 <h3 className="text-3xl sm:text-3xl lg:text-4xl font-bold text-green-300">
-                  Entrepreneurs
+                  Entrepreneurs &nbsp;<span className="font-thin text-white">|</span>&nbsp;MSME &nbsp;<span className="font-thin text-white">|</span>&nbsp;Real Estate &nbsp;<span className="font-thin text-white">|</span>&nbsp;Startups &nbsp;<span className="font-thin text-white">|</span>&nbsp;Turnarounds
                 </h3>
                 <h3 className="text-2xl sm:text-2xl lg:text-2xl font-semibold text-gray-200 mt-6">
-                Customised Business & Project Funding l High Yield Investment Programs
+                Customised Business & Project Funding <span className="font-thin text-white">|</span> High Yield Investment Programs
                 </h3>
               </div>
               
@@ -185,9 +185,9 @@ export default function Home() {
             </Badge> */}
             <h1 className="text-4xl font-bold text-gray-900 mb-12">Our Services</h1>
             <div> </div>
-            <h2 className="text-2xl text-gray-900">
+            {/* <h2 className="text-2xl text-gray-900">
               The Services We Offer <span className="text-green-500">For You</span>
-            </h2>
+            </h2> */}
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -210,7 +210,7 @@ export default function Home() {
                 </CardHeader>
                 <CardContent>
                   <CardDescription className="text-lg text-gray-300 hover:text-gray-100 transition-colors duration-300">
-                  We provide well designed Structured Private Project Funding in various business sectors
+                  We provide well designed Structured Private Project Funding in various BUSINESS sectors
                   </CardDescription>
                 </CardContent>
               </Card>
@@ -235,7 +235,7 @@ export default function Home() {
                 </CardHeader>
                 <CardContent>
                   <CardDescription className="text-lg text-gray-300 hover:text-gray-100 transition-colors duration-300">
-                  We will advise and guide you through various domestic opportunities in obtaining High Yield / Returns
+                  We will advise and guide you through various DOMESTIC opportunities in obtaining High Yield / Returns
                   </CardDescription>
                 </CardContent>
               </Card>
@@ -260,7 +260,7 @@ export default function Home() {
                 </CardHeader>
                 <CardContent>
                   <CardDescription className="text-lg text-gray-300 hover:text-gray-100 transition-colors duration-300">
-                  We will advise and guide you through various International Opportunities of High Yield Programs / Returns
+                  We will advise and guide you through various INTERNATIONAL Opportunities of High Yield Programs / Returns
                   </CardDescription>
                 </CardContent>
               </Card>
@@ -332,67 +332,8 @@ export default function Home() {
               </CardContent>
             </Card>
           </div>
-
-          {/* Security & Privacy Section */}
-          <div className="text-center mb-12">
-            {/* <Badge variant="outline" className="mb-4 text-green-500 border-green-500">
-              Security & Privacy
-            </Badge> */}
-            
-            <h3 className="text-2xl md:text-4xl font-semibold text-gray-900">
-              We Take Your <span className="text-green-500">Security</span> and <span className="text-green-500">Privacy</span> Seriously
-            </h3>
-            <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
-              Enjoy easy and convenient access to your funds with our range of
-              checking account options. Benefit from features such as online
-              and mobile banking, debit cards, and free ATM access.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Security Card 1 */}
-            <Card className="text-center hover:-translate-y-1 transition duration-300 border-0 shadow-lg">
-              <CardContent className="p-6">
-                <div className="mb-4 flex justify-center">
-                  <Image src="/icon1.png" alt="Encrypted Protection" width={100} height={100} />
-                </div>
-                <CardTitle className="text-xl mb-2">Encrypted Protection</CardTitle>
-                <CardDescription className="text-lg">
-                  Enjoy easy and convenient access to your funds with our range of
-                  checking account options. Benefit from features such as online
-                  and mobile banking, debit cards, and free ATM access.
-                </CardDescription>
-              </CardContent>
-            </Card>
-
-            {/* Security Card 2 */}
-            <Card className="text-center hover:-translate-y-1 transition duration-300 border-0 shadow-lg">
-              <CardContent className="p-6">
-                <div className="mb-4 flex justify-center">
-                  <Image src="/icon2.png" alt="Safe Browsing" width={100} height={100} />
-                </div>
-                <CardTitle className="text-xl mb-2">Safe Browsing</CardTitle>
-                <CardDescription className="text-lg">
-                  Build your savings with our competitive interest rates and flexible savings account options. Whether you're saving for a specific goal or want to grow your wealth over time, we have the right account for you.
-                </CardDescription>
-              </CardContent>
-            </Card>
-
-            {/* Security Card 3 */}
-            <Card className="text-center hover:-translate-y-1 transition duration-300 border-0 shadow-lg">
-              <CardContent className="p-6">
-                <div className="mb-4 flex justify-center">
-                  <Image src="/icon3.png" alt="Data Security" width={100} height={100} />
-                </div>
-                <CardTitle className="text-xl mb-2">Data Security</CardTitle>
-                <CardDescription className="text-lg">
-                  Realize your dreams with our flexible loan and mortgage options. From personal loans to home mortgages, our experienced loan officers are here to guide you through the application process and help you secure the funds you need.
-                </CardDescription>
-              </CardContent>
-            </Card>
-          </div>
         </div>
-      </section>
+      </section> 
 
       {/* Separator after About Section */}
       <Separator className="my-8 bg-gray-300" />
@@ -423,86 +364,7 @@ export default function Home() {
       {/* Separator after CTA Section */}
       <Separator className="my-8 bg-gray-300" />
 
-      {/* Testimonials Section */}
-      {/*
-      <section className="bg-white py-12 px-6 sm:px-12 lg:px-24">
-        <div className="text-center mb-12">
-          <Badge variant="outline" className="mb-4 text-green-500 border-green-500">
-            Client Testimonials
-          </Badge>
-          <h2 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-blue-900">
-            Our <span className="text-green-400">Testimonials</span>
-          </h2>
-          <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 mt-4 max-w-4xl mx-auto">
-            Discover how YourBank has transformed lives with innovative digital solutions and personalized customer service.
-            See why our clients trust us for a secure and prosperous financial journey.
-          </p>
-        </div>
-
-        <div className="flex flex-col items-center w-full">
-          // Swiper Slider
-          <Swiper
-            slidesPerView={1}
-            spaceBetween={20}
-            navigation={{
-              nextEl: ".custom-next",
-              prevEl: ".custom-prev",
-            }}
-            pagination={{ clickable: true }}
-            breakpoints={{
-              768: {
-                slidesPerView: 2,
-                spaceBetween: 30,
-              },
-              1024: {
-                slidesPerView: 3,
-                spaceBetween: 40,
-              },
-            }}
-            modules={[Navigation, Pagination, Autoplay]}
-            loop={true}
-            autoplay={{
-              delay: 3000,
-              disableOnInteraction: true,
-            }}
-            className="mySwiper w-full mt-10"
-          >
-            {testimonialsData.map((testimonial) => (
-              <SwiperSlide key={testimonial.id} className="flex justify-center">
-                <Card className="p-6 flex flex-col justify-center text-center h-[20rem] border-0 shadow-lg">
-                  <CardContent className="p-0">
-                    <div className="text-3xl text-green-400 mb-4 flex justify-center items-center h-[30%]">
-                      <img src="/quote2.png" alt="Quote Icon" className="w-full h-12" />
-                    </div>
-                    <CardDescription className="text-sm sm:text-base text-gray-700 mb-4 h-[70%]">
-                      {testimonial.text}
-                    </CardDescription>
-              </CardContent>
-            </Card>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-
-      // Custom Navigation Buttons
-      <div className="flex justify-center mt-8 gap-8">
-        <Button
-          variant="ghost"
-          size="icon"
-          className="custom-prev w-12 h-12 rounded-full text-white hover:bg-white/10"
-        >
-          <img src="/leftButton.png" alt="Left Arrow" width={67} height={67} />
-        </Button>
-        <Button
-          variant="ghost"
-          size="icon"
-          className="custom-next w-12 h-12 rounded-full text-white hover:bg-white/10"
-        >
-          <img src="/rightButton.png" alt="Right Arrow" width={67} height={67} />
-        </Button>
-      </div>
-    </div>
-  </section>
-  */}
+      {/* Testimonials Section - Temporarily removed */}
 
       <Footer />
     </>

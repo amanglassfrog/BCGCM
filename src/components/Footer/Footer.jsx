@@ -31,17 +31,45 @@ const Footer = () => {
           </Card>
 
           {/* Right Column - Contact Details */}
-          <Card className="border-0 shadow-none bg-transparent w-1/3">
+          {/* <Card className="border-0 shadow-none bg-transparent w-1/3">
             <CardContent className="p-0">
-              <h3 className="text-xl font-bold text-black mb-4">Contact Details :</h3>
+              <h3 className="text-xl font-bold text-black mb-4">&emsp;Contact Details :</h3>
               <div className="space-y-2 text-base">
-                <div className="text-black">Email ID  : bcgcmindia@gmail.com</div>
+              <div className="text-black">&emsp;&emsp;&emsp;Email ID -01  &emsp;: info@bcgcmindia.com</div>
+                <div className="text-black">&emsp;&emsp;&emsp;Email ID -02  &emsp;: bcgcmindia@gmail.com</div>
                 {/* <div className="text-black">Email ID -02 :</div> */}
-                <div className="text-black">Mobile No : +91 8080 738225</div>
-                <div className="text-black">WhatsApp No : +91 8080 738225</div>
-              </div>
-            </CardContent>
-          </Card>
+               {/* <Card className="border-0 shadow-none bg-transparent w-1/3">
+  <CardContent className="p-0">
+    <h3 className="text-xl font-bold text-black mb-4">Contact Details</h3>
+    <div className="space-y-2 text-base text-right text-black">
+      <div>&emsp;&emsp;&emsp; Email ID -01:  info@bcgcmindia.com</div>
+      <div>Email ID -02: bcgcmindia@gmail.com</div>
+      <div>Mobile No&emsp;: +91 8080 738225</div>
+      <div>WhatsApp No&emsp;: +91 8080 738225</div>
+    </div>
+  </CardContent>
+</Card> */}
+<Card className="border-0 shadow-none bg-transparent w-1/3">
+  <CardContent className="p-0">
+    {/* Heading */}
+    <h3 className="text-xl font-bold text-black mb-4">Contact Details :</h3>
+
+    {/* Grid layout for alignment */}
+    <div className="grid grid-cols-[150px_auto] gap-x-2 text-base text-black">
+      <div>Email ID -01</div>
+      <div>: info@bcgcmindia.com</div>
+
+      <div>Email ID -02</div>
+      <div>: bcgcmindia@gmail.com</div>
+
+      <div>Mobile No</div>
+      <div>: +91 8080 738225</div>
+
+      <div>WhatsApp No</div>
+      <div>: +91 8080738225</div>
+    </div>
+  </CardContent>
+</Card>
         </div>
 
         {/* Disclaimer Section */}
