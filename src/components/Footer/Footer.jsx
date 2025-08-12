@@ -1,3 +1,4 @@
+// Force rebuild - Footer component updated
 import React from "react";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
