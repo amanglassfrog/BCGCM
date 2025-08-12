@@ -57,16 +57,16 @@ const Footer = () => {
     {/* Grid layout for alignment */}
     <div className="grid grid-cols-[150px_auto] gap-x-2 text-base text-black">
       <div>Email ID -01</div>
-      <div>: info@bcgcmindia.com</div>
+      <div>: &emsp;&emsp;&emsp;info@bcgcmindia.com</div>
 
       <div>Email ID -02</div>
-      <div>: bcgcmindia@gmail.com</div>
+      <div>: &emsp;&emsp;&thinsp;&thinsp;bcgcmindia@gmail.com</div>
 
       <div>Mobile No</div>
-      <div>: +91 8080 738225</div>
+      <div>: &emsp;&emsp;&emsp;&emsp;&emsp;+91 8080 738225</div>
 
       <div>WhatsApp No</div>
-      <div>: +91 8080738225</div>
+      <div>: &emsp;&emsp;&emsp;&emsp;&emsp;+91 8080 738225</div>
     </div>
   </CardContent>
 </Card>
