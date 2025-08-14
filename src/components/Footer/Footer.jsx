@@ -36,10 +36,10 @@ const Footer = () => {
             <CardContent className="p-0">
               <h3 className="text-xl font-bold text-black mb-4">Contact Details :</h3>
               <div className="space-y-2 text-base">
-                <div className="text-black">Email ID -01 : info@bcgcmindia.com</div>
-                <div className="text-black">Email ID -02 : bcgcmindia@gmail.com</div>
-                <div className="text-black">Mobile No : +91 8080 738225</div>
-                <div className="text-black">WhatsApp No : +91 8080 738225</div>
+                <div className="text-black">Email ID -01 <span style={{ marginLeft: "40px" }}>  :</span> <span style={{ marginLeft: "80px" }}>info@bcgcmindia.com</span></div>
+                <div className="text-black">Email ID -02 <span style={{ marginLeft: "38px" }}>  :</span> <span style={{ marginLeft: "68px" }}>bcgcmindia@gmail.com</span></div>
+                <div className="text-black">Mobile No <span style={{ marginLeft: "37px" }}> &nbsp; &nbsp; :</span> <span style={{ marginLeft: "110px" }}>+91 8080 738225</span></div>
+                <div className="text-black">WhatsApp No <span style={{ marginLeft: "15px" }}> &nbsp;&nbsp; :</span> <span style={{ marginLeft: "108px" }}>+91 8080 738225</span></div>
               </div>
             </CardContent>
           </Card>

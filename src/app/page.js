@@ -152,7 +152,7 @@ export default function Home() {
                  for
                 </h2>
                 <h3 className="text-3xl sm:text-3xl lg:text-4xl font-bold text-green-300">
-                  Entrepreneurs &nbsp;<span className="font-thin text-white">|</span>&nbsp;MSME &nbsp;<span className="font-thin text-white">|</span>&nbsp;Real Estate &nbsp;<span className="font-thin text-white">|</span>&nbsp;Startups &nbsp;<span className="font-thin text-white">|</span>&nbsp;Turnarounds
+                  MSME &nbsp;<span className="font-thin text-white">|</span>&nbsp;Real Estate &nbsp;<span className="font-thin text-white">|</span>&nbsp;Turnarounds &nbsp;<span className="font-thin text-white">|</span>&nbsp;Entrepreneurs &nbsp;<span className="font-thin text-white">|</span>&nbsp;Startups
                 </h3>
                 <h3 className="text-2xl sm:text-2xl lg:text-2xl font-semibold text-gray-200 mt-6">
                 Customised Business & Project Funding <span className="font-thin text-white">|</span> High Yield Investment Programs
@@ -282,24 +282,30 @@ export default function Home() {
             <h1 className="text-3xl font-bold text-gray-900 mb-8">About Us</h1>
             <h2 className="text-2xl md:text-6xl font-semibold text-gray-900">
               Strategic Investment & <span className="text-green-500">Funding Agency</span>
-            </h2>
-            <p className="mt-4 text-lg text-gray-600 max-w-4xl mx-auto">
-              BCGCM India Pvt Ltd will serve as a strategic investment and funding agency for high-potential INDIA, GLOBAL startups,
-              with a focus on early-stage venture funding, technical and operational due diligence, post-investment support and acceleration,
-              and AI-powered pipeline development.
+            </h2><br></br>
+            <p className="mb-4 text-lg text-gray-600 max-w-4xl mx-auto text-justify">
+              BCGCMI is a Private Limited company headed by the Principal Promoter – Mr SRINIVAS CHADA.
             </p>
-            <p className="mt-4 text-lg text-gray-600 max-w-4xl mx-auto">
-              This division will act as a gateway for BCGCM's global capital to access and nurture innovation,
-              particularly in the career tech, health tech, and social impact sectors.
-            </p>
+                          <p className="mb-4 text-lg text-gray-600 max-w-4xl mx-auto text-justify">
+                Our Primary services are organizing LOW COST business funds through Strategic approaches and non-conventional methodologies. 
+              </p>
+              <p className="mb-4 text-lg text-gray-600 max-w-4xl mx-auto text-justify">
+                We act as a gateway for BCGCM's global capital to access and nurture innovation, particularly in the Agro-tech, Health-tech, and social impact sectors. 
+              </p>
+                <p className="mb-4 text-lg text-gray-600 max-w-4xl mx-auto text-justify">
+                All our business funding process comply the financial framework & regulations as defined by Reserve bank of India, European Union, United States of America, and United Arab Emirates.
+              </p>
+                <p className="mb-4 text-lg text-gray-600 max-w-4xl mx-auto text-justify">
+                We are official mandates for a reputed organization based in Manhattan, USA & Athens, Greece for their investment portfolios up to Euro 400 Million focused to South Asian & African countries.
+              </p>            
           </div>
 
           {/* BCGCM India Ltd Focus Areas */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             <Card className="text-center hover:-translate-y-1 transition duration-300 border-0 shadow-lg bg-[#082541] text-white">
               <CardContent className="p-6">
-                <CardTitle className="text-xl mb-2">Early-stage Venture Funding</CardTitle>
-                <CardDescription className="text-gray-300">
+                {/* <CardTitle className="text-xl mb-2">Preliminary Meeting by Fixing a call  </CardTitle> */}
+                <CardDescription className="text-xl mb-2 font-bold text-white">
                   Strategic capital investment for promising startups at their early growth stages.
                 </CardDescription>
               </CardContent>
@@ -307,27 +313,29 @@ export default function Home() {
 
             <Card className="text-center hover:-translate-y-1 transition duration-300 border-0 shadow-lg bg-[#082541] text-white">
               <CardContent className="p-6">
-                <CardTitle className="text-xl mb-2">Technical & Operational Due Diligence</CardTitle>
-                <CardDescription className="text-gray-300">
-                  Comprehensive assessment of technical capabilities and operational efficiency.
+                {/* <CardTitle className="text-xl mb-2">Technical & Operational Due Diligence</CardTitle> */}
+                <CardDescription className="text-xl mb-2 font-bold text-white">
+                Submittals & 
+                Due Diligence
                 </CardDescription>
               </CardContent>
             </Card>
 
             <Card className="text-center hover:-translate-y-1 transition duration-300 border-0 shadow-lg bg-[#082541] text-white">
               <CardContent className="p-6">
-                <CardTitle className="text-xl mb-2">Post-investment Support & Acceleration</CardTitle>
-                <CardDescription className="text-gray-300">
-                  Ongoing guidance and resources to accelerate growth and success.
+                {/* <CardTitle className="text-xl mb-2">Post-investment Support & Acceleration</CardTitle> */}
+                <CardDescription className="text-xl mb-2 font-bold text-white">
+                Designing Strategic Financial Structures 
                 </CardDescription>
               </CardContent>
             </Card>
 
             <Card className="text-center hover:-translate-y-1 transition duration-300 border-0 shadow-lg bg-[#082541] text-white">
               <CardContent className="p-6">
-                <CardTitle className="text-xl mb-2">AI-powered Pipeline Development</CardTitle>
-                <CardDescription className="text-gray-300">
-                  Advanced AI technology to identify and develop high-potential investment opportunities.
+                {/* <CardTitle className="text-xl mb-2">AI-powered Pipeline Development</CardTitle> */}
+                <CardDescription className="text-xl mb-2 font-bold text-white">
+                Implementation &  
+Funding  
                 </CardDescription>
               </CardContent>
             </Card>
@@ -341,18 +349,32 @@ export default function Home() {
       {/* CTA Section */}
       <section className="bg-white text-[#082541] py-12 px-6 sm:px-12 lg:px-24">
         <div className="max-w-7xl mx-auto text-center">
-          {/* <Badge variant="secondary" className="mb-4 text-green-400 bg-green-400/20 border-green-400">
-            Get Started Today
-          </Badge> */}
-          <h2 className="text-2xl sm:text-3xl lg:text-6xl font-bold mb-4">
-            Not sure which pathway<br />
-            is <span className="text-green-400">right for you?</span>
-          </h2>
-          <p className="text-sm sm:text-base lg:text-lg mb-8 max-w-4xl mx-auto">
-            Explore your options further one-on-one with our team. Our consultation calls are
-            designed to guide you through the diverse financial programs and identify the optimal
-            solution tailored to your unique business needs and objectives.
-          </p>
+          
+         
+        
+          
+        
+          {/* Approach Us Section */}
+          <div className="mb-12">
+            <h3 className="text-4xl md:text-6xl font-bold text-black mb-2">Approach us</h3>
+            <p className="text-2xl md:text-3xl text-black mb-2">for</p>
+            <h4 className="text-3xl md:text-5xl font-bold text-black mb-4">FREE CONSULTATION</h4>
+            <p className="text-xl md:text-2xl text-black mb-6">Explore your Funding requirement</p>
+            <p className="text-sm sm:text-base lg:text-lg mb-8 max-w-4xl mx-auto text-gray-600">
+              Our consultation calls are designed to guide you through various options where you will obtain very LOW COST financial programs, and identify the optimal solution customized to your unique business needs and objectives.
+            </p>
+          </div>
+          
+          {/* Strategy Execution Success Image */}
+          <div className="mb-8">
+            <img 
+              src="/image.png" 
+              alt="Strategy → Execution → Success" 
+              className="mx-auto max-w-md"
+            />
+          </div>
+          
+          {/* Bottom CTA Button */}
           <Link href="/book-appointment">
             <Button className="bg-green-400 hover:bg-green-500 text-white px-8 py-3 text-lg font-semibold rounded-lg transition-colors duration-300">
               Book Your Consultation
