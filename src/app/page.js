@@ -279,66 +279,238 @@ export default function Home() {
               {/* <Badge variant="outline" className="mb-4 text-green-500 border-green-500">
                 About BCGCM India Ltd
               </Badge> */}
-            <h1 className="text-3xl font-bold text-gray-900 mb-8">About Us</h1>
+            <h1 className="text-4xl font-bold text-gray-900 mb-8">About Us</h1>
             <h2 className="text-2xl md:text-6xl font-semibold text-gray-900">
               Strategic Investment & <span className="text-green-500">Funding Agency</span>
             </h2><br></br>
             <p className="mb-4 text-lg text-gray-600 max-w-4xl mx-auto text-justify">
-              BCGCMI is a Private Limited company headed by the Principal Promoter – Mr SRINIVAS CHADA.
+            BCGCMI is the gateway for your Business to access low cost global funds through various Strategic approaches.
             </p>
                           <p className="mb-4 text-lg text-gray-600 max-w-4xl mx-auto text-justify">
-                Our Primary services are organizing LOW COST business funds through Strategic approaches and non-conventional methodologies. 
+                          Our Non-traditional approaches and Strategic & Structured Financial Programs will yield Constructive & Productive results only.
               </p>
               <p className="mb-4 text-lg text-gray-600 max-w-4xl mx-auto text-justify">
-                We act as a gateway for BCGCM's global capital to access and nurture innovation, particularly in the Agro-tech, Health-tech, and social impact sectors. 
+              All our business funding process comply the financial framework & regulations as defined by Reserve bank of India, European Union, United States of America, and United Arab Emirates. 
               </p>
                 <p className="mb-4 text-lg text-gray-600 max-w-4xl mx-auto text-justify">
-                All our business funding process comply the financial framework & regulations as defined by Reserve bank of India, European Union, United States of America, and United Arab Emirates.
+                BCGCMI are official mandates for a reputed organization based in Manhattan, USA & Athens, Greece for their investment portfolios up to Euro 400 Million focused to South Asian & African countries.
               </p>
                 <p className="mb-4 text-lg text-gray-600 max-w-4xl mx-auto text-justify">
-                We are official mandates for a reputed organization based in Manhattan, USA & Athens, Greece for their investment portfolios up to Euro 400 Million focused to South Asian & African countries.
+                BCGCMI is capable of organizing third party financial collaterals from a AA rated Multi-National Bank from Zurich in form of Stand by Letter of Credit whose face value is Minimum $ 10 Million and a Maximum of $ 100 Million.
               </p>            
+          </div>
+
+          {/* Principal Promoter Section */}
+          <div className="mb-16">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">Principal Promoter</h2>
+              <p className="text-lg text-gray-600">Meet our founder and principal promoter</p>
+            </div>
+            
+            <div className="flex justify-center">
+              <Card className="p-8 flex flex-col items-center text-center max-w-sm border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <CardContent className="p-0 flex flex-col items-center">
+                  <div className="mb-6">
+                    <Image
+                      src="/srinivas.png"
+                      alt="Srinivas Chada"
+                      width={150}
+                      height={150}
+                      className="rounded-full border-4 border-gray-300 shadow-md"
+                    />
+                  </div>
+                  <div className="text-center">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2">SRINIVAS CHADA</h3>
+                    <p className="text-lg font-semibold text-gray-700 mb-1">Director - Strategic Planning & Management</p>
+                    <p className="text-base text-gray-600">Principal Promoter of BCGCMI</p>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+
+          {/* Associate Promoters Section */}
+          <div className="mb-16">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Associate Promoters</h2>
+              <p className="text-lg text-gray-600">Meet our dedicated team of associate promoters</p>
+            </div>
+            
+            <div className="flex flex-col items-center w-full">
+              {/* Swiper Slider */}
+              <Swiper
+                slidesPerView={1}
+                spaceBetween={20}
+                navigation={{
+                  nextEl: ".custom-next-associates",
+                  prevEl: ".custom-prev-associates",
+                }}
+                pagination={{ clickable: true }}
+                breakpoints={{
+                  768: {
+                    slidesPerView: 2,
+                    spaceBetween: 30,
+                  },
+                  1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 40,
+                  },
+                }}
+                modules={[Navigation, Pagination, Autoplay]}
+                loop={true}
+                autoplay={{
+                  delay: 4000,
+                  disableOnInteraction: false,
+                }}
+                className="mySwiper w-full max-w-6xl"
+              >
+                {/* Associate Promoter 1 */}
+                <SwiperSlide className="flex justify-center">
+                  <Card className="p-6 flex flex-col items-center text-center h-[20rem] border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <CardContent className="p-0 flex flex-col items-center">
+                      <div className="mb-4">
+                        <Image
+                          src="/associate1.png"
+                          alt="Amit Bajaj"
+                          width={120}
+                          height={120}
+                          className="rounded-full border-4 border-gray-300 shadow-md"
+                        />
+                      </div>
+                      <div className="text-center">
+                        <h3 className="text-xl font-bold text-gray-900 mb-2">AMIT BAJAJ</h3>
+                        <p className="text-lg font-semibold text-gray-700 mb-1">Associate Promoter</p>
+                        <p className="text-base text-gray-600">Strategic Business Development</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </SwiperSlide>
+
+                {/* Associate Promoter 2 */}
+                <SwiperSlide className="flex justify-center">
+                  <Card className="p-6 flex flex-col items-center text-center h-[20rem] border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <CardContent className="p-0 flex flex-col items-center">
+                      <div className="mb-4">
+                        <Image
+                          src="/associate2.png"
+                          alt="Associate Promoter 2"
+                          width={120}
+                          height={120}
+                          className="rounded-full border-4 border-gray-300 shadow-md"
+                        />
+                      </div>
+                      <div className="text-center">
+                        <h3 className="text-xl font-bold text-gray-900 mb-2">DEEPAK KUMAR</h3>
+                        <p className="text-lg font-semibold text-gray-700 mb-1">Associate Promoter</p>
+                        <p className="text-base text-gray-600">Financial Advisory Services</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </SwiperSlide>
+
+                {/* Associate Promoter 3 */}
+                <SwiperSlide className="flex justify-center">
+                  <Card className="p-6 flex flex-col items-center text-center h-[20rem] border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <CardContent className="p-0 flex flex-col items-center">
+                      <div className="mb-4">
+                        <Image
+                          src="/associate3.png"
+                          alt="Associate Promoter 3"
+                          width={120}
+                          height={120}
+                          className="rounded-full border-4 border-gray-300 shadow-md"
+                        />
+                      </div>
+                      <div className="text-center">
+                        <h3 className="text-xl font-bold text-gray-900 mb-2">WALTER </h3>
+                        <p className="text-lg font-semibold text-gray-700 mb-1">Associate Promoter</p>
+                        <p className="text-base text-gray-600">Investment Relations</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </SwiperSlide>
+
+                {/* Associate Promoter 4 */}
+                <SwiperSlide className="flex justify-center">
+                  <Card className="p-6 flex flex-col items-center text-center h-[20rem] border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <CardContent className="p-0 flex flex-col items-center">
+                      <div className="mb-4">
+                        <Image
+                          src="/associate4.png"
+                          alt="Associate Promoter 4"
+                          width={120}
+                          height={120}
+                          className="rounded-full border-4 border-gray-300 shadow-md"
+                        />
+                      </div>
+                      <div className="text-center">
+                        <h3 className="text-xl font-bold text-gray-900 mb-2">MICHEAL </h3>
+                        <p className="text-lg font-semibold text-gray-700 mb-1">Associate Promoter</p>
+                        <p className="text-base text-gray-600">Project Management</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </SwiperSlide>
+              </Swiper>
+
+              {/* Custom Navigation Buttons */}
+              <div className="flex justify-center mt-8 gap-8">
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className="custom-prev-associates w-12 h-12 rounded-full border-2 border-gray-300 hover:border-blue-500 hover:bg-blue-50 transition-all duration-300"
+                >
+                  <Image src="/leftButton.png" alt="Previous" width={24} height={24} />
+                </Button>
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className="custom-next-associates w-12 h-12 rounded-full border-2 border-gray-300 hover:border-blue-500 hover:bg-blue-50 transition-all duration-300"
+                >
+                  <Image src="/rightButton.png" alt="Next" width={24} height={24} />
+                </Button>
+              </div>
+            </div>
           </div>
 
           {/* BCGCM India Ltd Focus Areas */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            <Card className="text-center hover:-translate-y-1 transition duration-300 border-0 shadow-lg bg-[#082541] text-white">
+            {/* <Card className="text-center hover:-translate-y-1 transition duration-300 border-0 shadow-lg bg-[#082541] text-white">
               <CardContent className="p-6">
                 {/* <CardTitle className="text-xl mb-2">Preliminary Meeting by Fixing a call  </CardTitle> */}
-                <CardDescription className="text-xl mb-2 font-bold text-white">
-                  Strategic capital investment for promising startups at their early growth stages.
-                </CardDescription>
-              </CardContent>
-            </Card>
+                {/* <CardDescription className="text-xl mb-2 font-bold text-white"> */}
+                  {/* Strategic capital investment for promising startups at their early growth stages. */}
+                {/* </CardDescription> */}
+              {/* </CardContent> */}
+          {/* </div></Card> */} 
 
-            <Card className="text-center hover:-translate-y-1 transition duration-300 border-0 shadow-lg bg-[#082541] text-white">
+            {/* <Card className="text-center hover:-translate-y-1 transition duration-300 border-0 shadow-lg bg-[#082541] text-white">
               <CardContent className="p-6">
                 {/* <CardTitle className="text-xl mb-2">Technical & Operational Due Diligence</CardTitle> */}
-                <CardDescription className="text-xl mb-2 font-bold text-white">
-                Submittals & 
-                Due Diligence
-                </CardDescription>
-              </CardContent>
-            </Card>
+                {/* <CardDescription className="text-xl mb-2 font-bold text-white"> */} 
+                {/* Preliminary Meeting by Fixing a call  */}
+                 {/* </CardDescription> */}
+              {/* </CardContent> */}
+            {/* </Card> */}
 
-            <Card className="text-center hover:-translate-y-1 transition duration-300 border-0 shadow-lg bg-[#082541] text-white">
+            {/* <Card className="text-center hover:-translate-y-1 transition duration-300 border-0 shadow-lg bg-[#082541] text-white">
               <CardContent className="p-6">
                 {/* <CardTitle className="text-xl mb-2">Post-investment Support & Acceleration</CardTitle> */}
-                <CardDescription className="text-xl mb-2 font-bold text-white">
-                Designing Strategic Financial Structures 
-                </CardDescription>
-              </CardContent>
-            </Card>
+                {/* <CardDescription className="text-xl mb-2 font-bold text-white"> */}
+                {/* Technical & Operational Due Diligence */}
+                {/* </CardDescription> */}
+              {/* </CardContent> */}
+            {/* </Card> */}
 
-            <Card className="text-center hover:-translate-y-1 transition duration-300 border-0 shadow-lg bg-[#082541] text-white">
-              <CardContent className="p-6">
+            {/* <Card className="text-center hover:-translate-y-1 transition duration-300 border-0 shadow-lg bg-[#082541] text-white"> */}
+              {/* <CardContent className="p-6"> */}
                 {/* <CardTitle className="text-xl mb-2">AI-powered Pipeline Development</CardTitle> */}
-                <CardDescription className="text-xl mb-2 font-bold text-white">
-                Implementation &  
-Funding  
-                </CardDescription>
-              </CardContent>
-            </Card>
+                {/* <CardDescription className="text-xl mb-2 font-bold text-white"> */}
+                {/* Implementation &  
+Funding   */}
+                {/* </CardDescription> */}
+              {/* </CardContent> */}
+            {/* </Card> */}
           </div>
         </div>
       </section> 
@@ -356,9 +528,9 @@ Funding
         
           {/* Approach Us Section */}
           <div className="mb-12">
-            <h3 className="text-4xl md:text-6xl font-bold text-black mb-2">Approach us</h3>
-            <p className="text-2xl md:text-3xl text-black mb-2">for</p>
-            <h4 className="text-3xl md:text-5xl font-bold text-black mb-4">FREE CONSULTATION</h4>
+            <h3 className="text-3xl md:text-6xl font-bold text-black mb-2">Approach us</h3>
+            <p className="text-xl md:text-3xl text-black mb-2">for</p>
+            <h4 className="text-2xl md:text-5xl font-bold text-black mb-4">FREE CONSULTATION</h4>
             <p className="text-xl md:text-2xl text-black mb-6">Explore your Funding requirement</p>
             <p className="text-sm sm:text-base lg:text-lg mb-8 max-w-4xl mx-auto text-gray-600">
               Our consultation calls are designed to guide you through various options where you will obtain very LOW COST financial programs, and identify the optimal solution customized to your unique business needs and objectives.
