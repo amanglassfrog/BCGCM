@@ -179,92 +179,104 @@ export default function Home() {
       {/* New Services Section */}
       <section id='solutions' className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section Header */}
           <div className="text-center mb-12">
-            {/* <Badge variant="outline" className="mb-4 text-green-500 border-green-500">
-              Our Services
-            </Badge> */}
-            <h1 className="text-4xl font-bold text-gray-900 mb-12">Our Services</h1>
-            <div> </div>
-            {/* <h2 className="text-2xl text-gray-900">
-              The Services We Offer <span className="text-green-500">For You</span>
-            </h2> */}
+            <div className="mb-8">
+              <span className="text-2xl font-bold tracking-wide" style={{ fontFamily: 'Times New Roman, Times, serif' }}>
+                <span style={{ color: '#09336F' }}>BCGCM</span><span style={{ color: '#B22222' }}>i</span>
+              </span>
+            </div>
+            <h1 className="text-4xl font-bold text-gray-900 mb-12">OUR SERVICES</h1>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Card 1: Structured Private Project Funding */}
-            <Link href="/structured-private-project-funding" className="block">
-              <Card className="h-full hover:scale-105 hover:-translate-y-2 transform transition-all duration-500 ease-in-out cursor-pointer border-0 shadow-lg bg-[#082541] text-white hover:shadow-2xl hover:shadow-blue-500/20">
-                <CardHeader>
-                  <div className="flex items-center justify-between">
-                    <CardTitle className="text-2xl hover:text-blue-200 transition-colors duration-300">
-                      Structured Private Project Funding
-                    </CardTitle>
-                    <Image 
-                      src="/arrowicon.png" 
-                      alt="Arrow" 
-                      width={34} 
-                      height={34} 
-                      className="hover:translate-x-2 transition-transform duration-300" 
-                    />
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-lg text-gray-300 hover:text-gray-100 transition-colors duration-300">
-                  We provide well designed Structured Private Project Funding in various BUSINESS sectors
-                  </CardDescription>
-                </CardContent>
-              </Card>
-            </Link>
+          {/* Services Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-16">
+            {/* INDIAN Service */}
+            <div className="bg-blue-200 border border-gray-200 shadow-lg rounded-lg overflow-hidden">
+              <div className="bg-[#1e3a5f] text-white text-center py-4">
+                <h2 className="text-2xl font-bold">INDIAN</h2>
+              </div>
+              <div className="bg-blue-200 p-8">
+                <ul className="space-y-3 text-gray-800">
+                  <li className="flex items-start">
+                    <span className="text-black mr-2">•</span>
+                    <span>Unsecured Business Funding / Project Funding</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-black mr-2">•</span>
+                    <span>Only based on the Project and against cheques @18%pa</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
 
-            {/* Card 2: Structured Private Placement Programs */}
-            <Link href="/structured-private-placement-programs" className="block">
-              <Card className="h-full hover:scale-105 hover:-translate-y-2 transform transition-all duration-500 ease-in-out cursor-pointer border-0 shadow-lg bg-[#082541] text-white hover:shadow-2xl hover:shadow-blue-500/20">
-                <CardHeader>
-                  <div className="flex items-center justify-between">
-                    <CardTitle className="text-2xl hover:text-blue-200 transition-colors duration-300">
-                      Structured Private Placement Programs
-                    </CardTitle>
-                    <Image 
-                      src="/arrowicon.png" 
-                      alt="Arrow" 
-                      width={34} 
-                      height={34} 
-                      className="hover:translate-x-2 transition-transform duration-300" 
-                    />
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-lg text-gray-300 hover:text-gray-100 transition-colors duration-300">
-                  We will advise and guide you through various DOMESTIC opportunities in obtaining High Yield / Returns
-                  </CardDescription>
-                </CardContent>
-              </Card>
-            </Link>
+            {/* USA & EU Service */}
+            <div className="bg-white border border-gray-200 shadow-lg rounded-lg overflow-hidden">
+              <div className="bg-[#1e3a5f] text-white text-center py-4">
+                <h2 className="text-2xl font-bold">USA & EU</h2>
+              </div>
+              <div className="bg-blue-200 p-12">
+                <ul className="space-y-3 text-gray-800">
+                  <li className="flex items-start">
+                    <span className="text-black mr-2">•</span>
+                    <span>Business & Project Funding</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-black mr-2">•</span>
+                    <span>Based on Financial Collateral <br/>@ 6% pa</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
 
-            {/* Card 3: Global Businesss */}
-            <Link href="/global-businesss" className="block">
-              <Card className="h-full hover:scale-105 hover:-translate-y-2 transform transition-all duration-500 ease-in-out cursor-pointer border-0 shadow-lg bg-[#082541] text-white hover:shadow-2xl hover:shadow-blue-500/20">
-                <CardHeader>
-                  <div className="flex items-center justify-between">
-                    <CardTitle className="text-2xl hover:text-blue-200 transition-colors duration-300">
-                      Global Businesss
-                    </CardTitle>
-                    <Image 
-                      src="/arrowicon.png" 
-                      alt="Arrow" 
-                      width={34} 
-                      height={34} 
-                      className="hover:translate-x-2 transition-transform duration-300" 
-                    />
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-lg text-gray-300 hover:text-gray-100 transition-colors duration-300">
-                  We will advise and guide you through various INTERNATIONAL Opportunities of High Yield Programs / Returns
-                  </CardDescription>
-                </CardContent>
-              </Card>
-            </Link>
+            {/* PPP Service */}
+            <div className="bg-blue-200 border border-gray-200 shadow-lg rounded-lg overflow-hidden">
+              <div className="bg-[#1e3a5f] text-white text-center py-4">
+                <h2 className="text-2xl font-bold">PPP</h2>
+              </div>
+              <div className="bg-blue-200 p-10">
+                <ul className="space-y-3 text-gray-800">
+                  <li className="flex items-start">
+                    <span className="text-black mr-2">•</span>
+                    <span>Non-Recourse Business & Project Funding</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-black mr-2">•</span>
+                    <span>High Yield Programs</span>
+                  </li>
+                 
+                </ul>
+              </div>
+            </div>
+          </div>
+
+     
+          <div className="max-w-md mx-auto">
+            <div className="bg-white  border-gray-200 shadow-lg rounded-lg overflow-hidden relative">
+              {/* <div className="bg-[#1e3a5f] text-white text-center py-4">
+                <h2 className="text-2xl font-bold">INDIAN</h2>
+              </div> */}
+              {/* <div className="bg-blue-100 p-6"> */}
+                {/* <ul className="space-y-2 text-gray-800 text-sm">
+                  <li className="flex items-start">
+                    <span className="text-black mr-2">•</span>
+                    <span>Unsecured Business Funding / Project Funding</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-black mr-2">•</span>
+                    <span>Only based on the Project and against cheques @18%pa</span>
+                  </li>
+                </ul> */}
+              {/* </div> */}
+              {/* Arrow indicator */}
+              {/* <div className="absolute -left-8 top-1/2 transform -translate-y-1/2">
+                <div className="w-0 h-0 border-t-8 border-t-transparent border-b-8 border-b-transparent border-r-8 border-r-blue-500"></div>
+              </div>
+              Text indicator */}
+              {/* <div className="absolute -right-32 top-1/2 transform -translate-y-1/2 text-sm text-gray-600 whitespace-nowrap">
+                This is the Pattern<br />that is preferred
+              </div> */}
+            </div>
           </div>
         </div>
       </section>
@@ -279,8 +291,8 @@ export default function Home() {
               {/* <Badge variant="outline" className="mb-4 text-green-500 border-green-500">
                 About BCGCM India Ltd
               </Badge> */}
-            <h1 className="text-4xl font-bold text-gray-900 mb-8">About Us</h1>
-            <h2 className="text-2xl md:text-6xl font-semibold text-gray-900">
+            <h1 className="text-3xl font-bold text-gray-900 mb-8">About Us</h1>
+            <h2 className="text-xl md:text-6xl font-semibold text-gray-900">
               Strategic Investment & <span className="text-green-500">Funding Agency</span>
             </h2><br></br>
             <p className="mb-4 text-lg text-gray-600 max-w-4xl mx-auto text-justify">
