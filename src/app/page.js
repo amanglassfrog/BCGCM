@@ -381,13 +381,9 @@ export default function Home() {
                   <Card className="p-6 flex flex-col items-center text-center h-[20rem] border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
                     <CardContent className="p-0 flex flex-col items-center">
                       <div className="mb-4">
-                        <Image
-                          src="/associate1.png"
-                          alt="Amit Bajaj"
-                          width={120}
-                          height={120}
-                          className="rounded-full border-4 border-gray-300 shadow-md"
-                        />
+                        <div className="w-[120px] h-[120px] rounded-full border-4 border-gray-300 shadow-md bg-indigo-600 flex items-center justify-center">
+                          <span className="text-white text-3xl font-bold">AB</span>
+                        </div>
                       </div>
                       <div className="text-center">
                         <h3 className="text-xl font-bold text-gray-900 mb-2">AMIT BAJAJ</h3>
@@ -403,13 +399,9 @@ export default function Home() {
                   <Card className="p-6 flex flex-col items-center text-center h-[20rem] border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
                     <CardContent className="p-0 flex flex-col items-center">
                       <div className="mb-4">
-                        <Image
-                          src="/associate2.png"
-                          alt="Associate Promoter 2"
-                          width={120}
-                          height={120}
-                          className="rounded-full border-4 border-gray-300 shadow-md"
-                        />
+                        <div className="w-[120px] h-[120px] rounded-full border-4 border-gray-300 shadow-md bg-emerald-600 flex items-center justify-center">
+                          <span className="text-white text-3xl font-bold">DK</span>
+                        </div>
                       </div>
                       <div className="text-center">
                         <h3 className="text-xl font-bold text-gray-900 mb-2">DEEPAK KUMAR</h3>
@@ -425,13 +417,9 @@ export default function Home() {
                   <Card className="p-6 flex flex-col items-center text-center h-[20rem] border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
                     <CardContent className="p-0 flex flex-col items-center">
                       <div className="mb-4">
-                        <Image
-                          src="/associate3.png"
-                          alt="Associate Promoter 3"
-                          width={120}
-                          height={120}
-                          className="rounded-full border-4 border-gray-300 shadow-md"
-                        />
+                        <div className="w-[120px] h-[120px] rounded-full border-4 border-gray-300 shadow-md bg-red-600 flex items-center justify-center">
+                          <span className="text-white text-3xl font-bold">W</span>
+                        </div>
                       </div>
                       <div className="text-center">
                         <h3 className="text-xl font-bold text-gray-900 mb-2">WALTER </h3>
@@ -447,13 +435,9 @@ export default function Home() {
                   <Card className="p-6 flex flex-col items-center text-center h-[20rem] border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
                     <CardContent className="p-0 flex flex-col items-center">
                       <div className="mb-4">
-                        <Image
-                          src="/associate4.png"
-                          alt="Associate Promoter 4"
-                          width={120}
-                          height={120}
-                          className="rounded-full border-4 border-gray-300 shadow-md"
-                        />
+                        <div className="w-[120px] h-[120px] rounded-full border-4 border-gray-300 shadow-md bg-purple-600 flex items-center justify-center">
+                          <span className="text-white text-3xl font-bold">M</span>
+                        </div>
                       </div>
                       <div className="text-center">
                         <h3 className="text-xl font-bold text-gray-900 mb-2">MICHEAL </h3>
