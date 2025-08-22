@@ -478,7 +478,7 @@ const MeetingSection = () => {
       }
 
       // Send SMS notifications to both admin and user
-      setSuccessMessage("Sending confirmation emails and notifications...");
+      setSuccessMessage("Sending confirmation emails and SMS notifications...");
       await sendSMSNotifications();
 
       // Show success message and set appointment confirmed
@@ -949,6 +949,7 @@ const MeetingSection = () => {
                         <div className="text-sm text-green-600">
                           <p>• Confirmation email sent to: {email}</p>
                           <p>• Admin notification sent to: bcgcmindia@gmail.com</p>
+                          <p>• Copy of user email sent to: bcgcmindia@gmail.com</p>
                           <p>• SMS notifications sent to admin and user</p>
                         </div>
                         <p className="text-green-600 text-sm">

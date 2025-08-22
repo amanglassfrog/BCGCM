@@ -162,9 +162,22 @@ Team BCGCM India
       // Send email based on type
       if (type === 'user_confirmation') {
         try {
+          // Send user confirmation email
           await transporter.sendMail(userMailOptions);
           emailsSent++;
           // console.log('User confirmation email sent successfully to:', email);
+          
+          // Also send a copy to admin (bcgcmindia@gmail.com)
+          const userCopyMailOptions = {
+            ...userMailOptions,
+            to: "bcgcmindia@gmail.com",
+            subject: `[COPY] ${userMailOptions.subject}`,
+            text: `[COPY SENT TO ADMIN]\n\n${userMailOptions.text}`
+          };
+          
+          await transporter.sendMail(userCopyMailOptions);
+          emailsSent++;
+          // console.log('User confirmation email copy sent successfully to admin');
         } catch (error) {
           // console.error('Error sending user confirmation email:', error);
           errors.push(`User email: ${error.message}`);
