@@ -1018,7 +1018,7 @@ const MeetingSection = () => {
                     {/* Help Text */}
                     {(!name || !email || !transactionIdValid) && (
                       <p className="text-blue-600 text-xs text-center mt-2">
-                        Please fill in all required fields to confirm your appointment
+                        {/* Please fill in all required fields to confirm your appointment */}
                       </p>
                     )}
 
@@ -1034,15 +1034,15 @@ const MeetingSection = () => {
                         <p className="text-green-700">
                           Your appointment has been successfully confirmed. We've sent you a confirmation email with all the details.
                         </p>
-                        <div className="text-sm text-green-600">
+                        {/* <div className="text-sm text-green-600">
                           <p>• Confirmation email sent to: {email}</p>
                           <p>• Admin notification sent to: bcgcmindia@gmail.com</p>
                           <p>• Copy of user email sent to: bcgcmindia@gmail.com</p>
                           <p>• SMS notifications sent to admin and user</p>
-                        </div>
-                        <p className="text-green-600 text-sm">
+                        </div> */}
+                        {/* <p className="text-green-600 text-sm">
                           This modal will close automatically in a few seconds...
-                        </p>
+                        </p> */}
                       </div>
                     )}
                   </>
