@@ -1,4 +1,5 @@
 import nodemailer from 'nodemailer';
+import { saveBooking, isTimeSlotAvailable } from '../../src/lib/utils/availability';
 
 export default async function handler(req, res) {
   // Add a GET endpoint for testing email configuration
@@ -207,6 +208,38 @@ Team BCGCM India
         } catch (error) {
           // console.error('Error sending user email:', error);
           errors.push(`User email: ${error.message}`);
+        }
+      }
+
+      // Save booking to database after successful email sending
+      if (emailsSent > 0 && type === 'user_confirmation') {
+        try {
+          // Check if time slot is still available before saving
+          const isAvailable = await isTimeSlotAvailable(selectedDate, selectedTime);
+          if (!isAvailable) {
+            // console.log('Time slot no longer available, cannot save booking');
+            errors.push('Time slot no longer available for database save');
+          } else {
+            // Save the booking to database
+            const saveResult = await saveBooking({
+              name,
+              email,
+              mobileNumber,
+              selectedDate,
+              selectedTime,
+              upiTransactionId
+            });
+            
+            if (saveResult.success) {
+              // console.log('Booking saved to database successfully:', saveResult.bookingId);
+            } else {
+              // console.error('Failed to save booking to database:', saveResult.error);
+              errors.push(`Database save: ${saveResult.error}`);
+            }
+          }
+        } catch (dbError) {
+          // console.error('Database error:', dbError);
+          errors.push(`Database: ${dbError.message}`);
         }
       }
 

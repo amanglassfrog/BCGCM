@@ -14,7 +14,7 @@ const months = [
   "July", "August", "September", "October", "November", "December",
 ];
 
-const timeSlots = ["2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM", "6:00 PM"];
+const timeSlots = ["2:00 PM", "2:30 PM", "3:00 PM", "3:30 PM", "4:00 PM", "4:30 PM", "5:00 PM"];
 
 const MeetingSection = () => {
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
@@ -38,6 +38,8 @@ const MeetingSection = () => {
   const [appointmentConfirmed, setAppointmentConfirmed] = useState(false);
   const [showBookingForm, setShowBookingForm] = useState(false);
   const [verifiedMobileNumber, setVerifiedMobileNumber] = useState("");
+  const [availableTimeSlots, setAvailableTimeSlots] = useState([]);
+  const [isLoadingSlots, setIsLoadingSlots] = useState(false);
 
   const today = new Date();
   const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
@@ -53,7 +55,10 @@ const MeetingSection = () => {
 
       const currentTime = now.getHours() * 60 + now.getMinutes();
 
-      const slots = timeSlots.map((slot) => {
+      // Use availableTimeSlots if available, otherwise fallback to static timeSlots
+      const slotsToUse = availableTimeSlots.length > 0 ? availableTimeSlots : timeSlots;
+      
+      const slots = slotsToUse.map((slot) => {
         const [time, meridian] = slot.split(" ");
         let [hours, minutes] = time.split(":").map(Number);
 
@@ -63,6 +68,7 @@ const MeetingSection = () => {
         return {
           time: slot,
           isPast: isToday && slotTimeInMinutes <= currentTime,
+          isAvailable: availableTimeSlots.includes(slot)
         };
       });
 
@@ -70,13 +76,19 @@ const MeetingSection = () => {
     };
 
     calculateSlotStatus();
-  }, [selectedDate]);
+  }, [selectedDate, availableTimeSlots]);
 
 
 
   const isDateInPast = (year, month, day) => {
     const date = new Date(year, month, day);
     return date < today.setHours(0, 0, 0, 0);
+  };
+
+  const isWeekend = (year, month, day) => {
+    const date = new Date(year, month, day);
+    const dayOfWeek = date.getDay();
+    return dayOfWeek === 0 || dayOfWeek === 6; // Sunday = 0, Saturday = 6
   };
 
   const handlePreviousMonth = () => {
@@ -97,15 +109,46 @@ const MeetingSection = () => {
     }
   };
 
-  const handleDateSelect = (day) => {
+  const handleDateSelect = async (day) => {
     if (!isDateInPast(currentYear, currentMonth, day)) {
-      setSelectedDate(`${months[currentMonth]} ${day}, ${currentYear}`);
+      // Check if it's a weekend
+      if (isWeekend(currentYear, currentMonth, day)) {
+        setSuccessMessage("Bookings are only available Monday to Friday. Please select a weekday.");
+        return;
+      }
+      
+      const formattedDate = `${months[currentMonth]} ${day}, ${currentYear}`;
+      setSelectedDate(formattedDate);
       setSelectedTime(null);
+      
+      // Fetch available time slots for the selected date
+      await fetchAvailableTimeSlots(formattedDate);
     }
   };
 
   const handleTimeSelect = (time) => {
     setSelectedTime(time);
+  };
+
+  const fetchAvailableTimeSlots = async (date) => {
+    if (!date) return;
+    
+    setIsLoadingSlots(true);
+    try {
+      const response = await fetch(`/api/check-availability?date=${encodeURIComponent(date)}`);
+      if (response.ok) {
+        const data = await response.json();
+        setAvailableTimeSlots(data.availableSlots || []);
+      } else {
+        console.error('Failed to fetch available time slots');
+        setAvailableTimeSlots([]);
+      }
+    } catch (error) {
+      console.error('Error fetching available time slots:', error);
+      setAvailableTimeSlots([]);
+    } finally {
+      setIsLoadingSlots(false);
+    }
   };
 
   const toggleMenuModal = () => {
@@ -589,6 +632,16 @@ const MeetingSection = () => {
               <CardTitle className="text-2xl">Select a Date & Time</CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
+              {/* Business Hours Info */}
+              <div className="p-3 bg-blue-50 border border-blue-200 rounded-md">
+                <p className="text-blue-800 text-sm font-medium">📅 Business Hours:</p>
+                <ul className="text-blue-700 text-xs mt-1 list-disc list-inside space-y-1">
+                  <li>Available: Monday to Friday only</li>
+                  <li>Time slots: 2:00 PM to 5:00 PM (30-minute intervals)</li>
+                  <li>Weekends are not available for booking</li>
+                </ul>
+              </div>
+              
               {/* Month and Year Selector */}
               <div className="flex items-center justify-between">
                 <Button
@@ -613,7 +666,7 @@ const MeetingSection = () => {
               {/* Calendar Grid */}
               <div className="grid grid-cols-7 text-center text-gray-700 gap-2">
                 {["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].map((day) => (
-                  <span key={day} className="font-semibold text-sm">
+                  <span key={day} className={`font-semibold text-sm ${day === "Sat" || day === "Sun" ? "text-gray-400" : ""}`}>
                     {day}
                   </span>
                 ))}
@@ -624,54 +677,85 @@ const MeetingSection = () => {
                     </span>
                   )
                 )}
-                {Array.from({ length: daysInMonth }, (_, day) => (
-                  <Button
-                    key={day + 1}
-                    onClick={() => handleDateSelect(day + 1)}
-                    disabled={isDateInPast(currentYear, currentMonth, day + 1)}
-                    variant={
-                      selectedDate === `${months[currentMonth]} ${day + 1}, ${currentYear}`
-                        ? "default"
-                        : "outline"
-                    }
-                    className={`p-2 rounded-lg ${isDateInPast(currentYear, currentMonth, day + 1)
-                        ? "text-gray-400 cursor-not-allowed"
-                        : selectedDate === `${months[currentMonth]} ${day + 1}, ${currentYear}`
-                          ? "bg-green-500 text-white"
-                          : "text-gray-700 hover:bg-green-100"
+                {Array.from({ length: daysInMonth }, (_, day) => {
+                  const isPast = isDateInPast(currentYear, currentMonth, day + 1);
+                  const isWeekendDay = isWeekend(currentYear, currentMonth, day + 1);
+                  const isDisabled = isPast || isWeekendDay;
+                  
+                  return (
+                    <Button
+                      key={day + 1}
+                      onClick={() => handleDateSelect(day + 1)}
+                      disabled={isDisabled}
+                      variant={
+                        selectedDate === `${months[currentMonth]} ${day + 1}, ${currentYear}`
+                          ? "default"
+                          : "outline"
+                      }
+                      className={`p-2 rounded-lg ${
+                        isPast
+                          ? "text-gray-400 cursor-not-allowed"
+                          : isWeekendDay
+                          ? "text-gray-400 cursor-not-allowed bg-gray-100"
+                          : selectedDate === `${months[currentMonth]} ${day + 1}, ${currentYear}`
+                            ? "bg-green-500 text-white"
+                            : "text-gray-700 hover:bg-green-100"
                       }`}
-                  >
-                    {day + 1}
-                  </Button>
-                ))}
+                    >
+                      {day + 1}
+                    </Button>
+                  );
+                })}
               </div>
 
               {/* Time Slots */}
               {selectedDate && (
                 <div className="space-y-4">
                   <h3 className="text-gray-800 font-semibold">{selectedDate}</h3>
-                  <div className="grid grid-cols-2 gap-4">
-                    {slotsWithStatus.map(({ time, isPast }) => (
-                      <Button
-                        key={time}
-                        onClick={() => !isPast && handleTimeSelect(time)}
-                        disabled={isPast}
-                        variant={
-                          selectedTime === time
-                            ? "default"
-                            : "outline"
-                        }
-                        className={`${isPast
-                            ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                            : selectedTime === time
+                  
+                                    {isLoadingSlots ? (
+                    <div className="flex items-center justify-center py-4">
+                      <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-[#09336F]"></div>
+                      <span className="ml-2 text-gray-600">Loading available time slots...</span>
+                    </div>
+                  ) : availableTimeSlots.length === 0 ? (
+                    <div className="text-center py-4">
+                      <p className="text-gray-500 text-sm">
+                        {selectedDate && new Date(selectedDate).getDay() === 0 || new Date(selectedDate).getDay() === 6
+                          ? "Weekends are not available for booking. Please select a weekday."
+                          : "No time slots available for this date. Please select another date."}
+                      </p>
+                    </div>
+                  ) : (
+                    <div className="grid grid-cols-2 gap-4">
+                      {slotsWithStatus.map(({ time, isPast, isAvailable }) => (
+                        <Button
+                          key={time}
+                          onClick={() => !isPast && isAvailable && handleTimeSelect(time)}
+                          disabled={isPast || !isAvailable}
+                          variant={
+                            selectedTime === time
+                              ? "default"
+                              : "outline"
+                          }
+                          className={`${
+                            isPast
+                              ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                              : !isAvailable
+                              ? "bg-red-300 text-red-600 cursor-not-allowed"
+                              : selectedTime === time
                               ? "bg-green-500 text-white"
                               : "bg-[#09336F] text-white hover:bg-green-500"
                           }`}
-                      >
-                        {time}
-                      </Button>
-                    ))}
-                  </div>
+                        >
+                          {time}
+                          {!isAvailable && !isPast && (
+                            <span className="ml-2 text-xs">(Booked)</span>
+                          )}
+                        </Button>
+                      ))}
+                    </div>
+                  )}
                 </div>
               )}
 
@@ -723,6 +807,10 @@ const MeetingSection = () => {
                     <li>Enter the 6-digit OTP received on your mobile</li>
                     <li>Complete payment and confirm appointment</li>
                   </ol>
+                  <div className="mt-2 pt-2 border-t border-blue-200">
+                    <p className="text-blue-800 text-xs font-medium">⏰ Business Hours:</p>
+                    <p className="text-blue-700 text-xs">Monday to Friday, 2:00 PM - 5:00 PM (30-min slots)</p>
+                  </div>
                 </div>
                 
                 {/* Success/Error Message Display */}
